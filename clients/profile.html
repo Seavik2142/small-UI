@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Free Promote Travel</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .profile-container {
+            min-height: 100vh;
+            background: var(--bg);
+            padding: 2rem 1.5rem;
+        }
+
+        .profile-header {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: opacity 0.2s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+
+        .profile-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(16, 42, 67, 0.06);
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .profile-info h2 {
+            margin: 0 0 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .profile-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .profile-menu-item {
+            padding: 1rem;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text);
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .profile-menu-item:hover,
+        .profile-menu-item.active {
+            background: rgba(24, 103, 255, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin: 0 0 1rem;
+            color: var(--text);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24, 103, 255, 0.1);
+        }
+
+        .form-group input:disabled {
+            background: var(--bg);
+            cursor: not-allowed;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary-custom,
+        .btn-secondary-custom,
+        .btn-danger-custom {
+            padding: 0.95rem 1.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary-custom {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        .btn-secondary-custom:hover {
+            background: var(--border);
+            opacity: 0.8;
+        }
+
+        .btn-danger-custom {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger-custom:hover {
+            background: #c0392b;
+        }
+
+        .info-display {
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-display label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .info-display span {
+            color: var(--muted);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <a href="main.html" class="back-btn">← Back to Home</a>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="profile-avatar" id="avatar">U</div>
+                <div class="profile-info">
+                    <h2 id="displayName">User</h2>
+                </div>
+                <div class="profile-menu">
+                    <button class="profile-menu-item active" onclick="showSection('info')">📋 My Info</button>
+                    <button class="profile-menu-item" onclick="showSection('security')">🔒 Security</button>
+                    <button class="profile-menu-item" onclick="logout()">🚪 Logout</button>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div id="infoSection" class="profile-card">
+                    <h3 class="section-title">My Information</h3>
+                    <div id="successMsg" class="success-message hidden"></div>
+
+                    <div class="info-display">
+                        <label>Email</label>
+                        <span id="displayEmail">email@example.com</span>
+                    </div>
+
+                    <form id="infoForm" style="display: none; margin-top: 1rem;">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" disabled>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="btn-primary-custom">Save Changes</button>
+                            <button type="button" class="btn-secondary-custom" onclick="cancelEdit('info')">Cancel</button>
+                        </div>
+                    </form>
+
+                    <div class="button-group" id="editBtnGroup" style="margin-top: 1.5rem;">
+                        <button class="btn-primary-custom" onclick="editInfo()">Edit Information</button>
+                    </div>
+                </div>
+
+                <div id="securitySection" class="profile-card hidden">
+                    <h3 class="section-title">Security Settings</h3>
+                    <div id="securityMsg" class="success-message hidden"></div>
+
+                    <form id="passwordForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" required>
+                            <div class="error-message" id="currentPasswordError" style="display: none; margin-top: 0.3rem;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" required>
+                            <div class="error-message" id="newPasswordError" style="display: none; margin-top: 0.3rem;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmNewPassword">Confirm New Password</label>
+                            <input type="password" id="confirmNewPassword" required>
+                            <div class="error-message" id="confirmPasswordError" style="display: none; margin-top: 0.3rem;"></div>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="btn-primary-custom">Update Password</button>
+                            <button type="button" class="btn-secondary-custom" onclick="cancelEdit('security')">Cancel</button>
+                        </div>
+                    </form>
+
+                    <div id="securityBtnGroup">
+                        <button class="btn-primary-custom" onclick="editPassword()">Change Password</button>
+                        <button class="btn-danger-custom" onclick="deleteAccount()" style="margin-left: 1rem;">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(currentUser);
+            loadUserData(user);
+
+            document.getElementById('infoForm').addEventListener('submit', updateUserInfo);
+            document.getElementById('passwordForm').addEventListener('submit', updatePassword);
+        });
+
+        function loadUserData(user) {
+            document.getElementById('displayName').textContent = user.name;
+            document.getElementById('displayEmail').textContent = user.email;
+            document.getElementById('name').value = user.name;
+            document.getElementById('email').value = user.email;
+
+            const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+            document.getElementById('avatar').textContent = initials;
+        }
+
+        function showSection(section) {
+            document.getElementById('infoSection').classList.add('hidden');
+            document.getElementById('securitySection').classList.add('hidden');
+
+            document.querySelectorAll('.profile-menu-item').forEach(item => item.classList.remove('active'));
+
+            if (section === 'info') {
+                document.getElementById('infoSection').classList.remove('hidden');
+            } else if (section === 'security') {
+                document.getElementById('securitySection').classList.remove('hidden');
+            }
+
+            event.target.classList.add('active');
+        }
+
+        function editInfo() {
+            document.getElementById('infoForm').style.display = 'block';
+            document.getElementById('editBtnGroup').style.display = 'none';
+        }
+
+        function editPassword() {
+            document.getElementById('passwordForm').style.display = 'block';
+            document.getElementById('securityBtnGroup').style.display = 'none';
+        }
+
+        function cancelEdit(section) {
+            if (section === 'info') {
+                document.getElementById('infoForm').style.display = 'none';
+                document.getElementById('editBtnGroup').style.display = 'flex';
+            } else if (section === 'security') {
+                document.getElementById('passwordForm').style.display = 'none';
+                document.getElementById('securityBtnGroup').style.display = 'block';
+            }
+        }
+
+        function updateUserInfo(e) {
+            e.preventDefault();
+            const newName = document.getElementById('name').value.trim();
+
+            if (!newName || newName.length < 2) {
+                showMessage('successMsg', 'Name must be at least 2 characters', 'error');
+                return;
+            }
+
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const userIndex = users.findIndex(u => u.email === currentUser.email);
+            if (userIndex !== -1) {
+                users[userIndex].name = newName;
+                localStorage.setItem('users', JSON.stringify(users));
+
+                currentUser.name = newName;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                loadUserData(currentUser);
+                showMessage('successMsg', 'Profile updated!', 'success');
+                cancelEdit('info');
+            }
+        }
+
+        function updatePassword(e) {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmNewPassword').value;
+
+            if (newPassword.length < 6) {
+                document.getElementById('newPasswordError').textContent = 'Password must be at least 6 characters';
+                document.getElementById('newPasswordError').style.display = 'block';
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                document.getElementById('confirmPasswordError').style.display = 'block';
+                return;
+            }
+
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentPassword !== currentUser.password) {
+                document.getElementById('currentPasswordError').textContent = 'Current password is incorrect';
+                document.getElementById('currentPasswordError').style.display = 'block';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userIndex = users.findIndex(u => u.email === currentUser.email);
+            if (userIndex !== -1) {
+                users[userIndex].password = newPassword;
+                localStorage.setItem('users', JSON.stringify(users));
+
+                currentUser.password = newPassword;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                showMessage('securityMsg', 'Password updated!', 'success');
+                cancelEdit('security');
+                document.getElementById('passwordForm').reset();
+            }
+        }
+
+        function deleteAccount() {
+            if (confirm('Delete account? This cannot be undone.')) {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+
+                const newUsers = users.filter(u => u.email !== currentUser.email);
+                localStorage.setItem('users', JSON.stringify(newUsers));
+                localStorage.removeItem('currentUser');
+
+                window.location.href = 'main.html';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'main.html';
+        }
+
+        function showMessage(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = 'success-message ' + (type === 'error' ? 'error-message' : '');
+            element.classList.remove('hidden');
+            setTimeout(() => element.classList.add('hidden'), 3000);
+        }
+    </script>
+</body>
+</html>

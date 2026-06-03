@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Free Promote Travel</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .auth-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--text);
+        }
+
+        .auth-header p {
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24, 103, 255, 0.1);
+        }
+
+        .form-group input.error {
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(24, 103, 255, 0.3);
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .auth-link p {
+            color: var(--muted);
+        }
+
+        .auth-link a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div style="width: 100%; max-width: 420px;">
+            <a href="main.html" class="back-link">← Back to Home</a>
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="image/logo.jpg" alt="Logo">
+                    <h1>Welcome Back</h1>
+                    <p>Login to your Free Promote Travel account</p>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    Login successful! Redirecting...
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+
+                <div class="auth-link">
+                    <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            let isValid = true;
+
+            // Email validation
+            if (!email) {
+                showError('emailError', 'Email is required');
+                emailInput.classList.add('error');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email');
+                emailInput.classList.add('error');
+                isValid = false;
+            } else {
+                clearError('emailError');
+                emailInput.classList.remove('error');
+            }
+
+            // Password validation
+            if (!password) {
+                showError('passwordError', 'Password is required');
+                passwordInput.classList.add('error');
+                isValid = false;
+            } else if (password.length < 6) {
+                showError('passwordError', 'Password must be at least 6 characters');
+                passwordInput.classList.add('error');
+                isValid = false;
+            } else {
+                clearError('passwordError');
+                passwordInput.classList.remove('error');
+            }
+
+            if (isValid) {
+                // Check if user exists in localStorage
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const user = users.find(u => u.email === email && u.password === password);
+
+                if (user) {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    document.getElementById('successMessage').classList.add('show');
+                    setTimeout(() => {
+                        window.location.href = 'main.html';
+                    }, 1500);
+                } else {
+                    showError('emailError', 'Invalid email or password');
+                    emailInput.classList.add('error');
+                }
+            }
+        });
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function showError(elementId, message) {
+            const errorEl = document.getElementById(elementId);
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        }
+
+        function clearError(elementId) {
+            const errorEl = document.getElementById(elementId);
+            errorEl.classList.remove('show');
+        }
+
+        // Clear errors on input
+        emailInput.addEventListener('input', () => {
+            if (emailInput.classList.contains('error')) {
+                clearError('emailError');
+                emailInput.classList.remove('error');
+            }
+        });
+
+        passwordInput.addEventListener('input', () => {
+            if (passwordInput.classList.contains('error')) {
+                clearError('passwordError');
+                passwordInput.classList.remove('error');
+            }
+        });
+    </script>
+</body>
+</html>
