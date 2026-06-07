@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Powersports | Free Promote Travel</title>
+    <link rel="stylesheet" href="../main.css">
+    <style>
+        /* Professional UI Enhancements */
+        .breadcrumb {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { animation: fadeInUp 0.8s ease forwards; }
+
+        .destination-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem 0 3rem;
+        }
+
+        .destination-hero h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.05;
+        }
+
+        .destination-hero p {
+            color: var(--muted);
+            margin: 1.25rem 0 1.5rem;
+        }
+
+        .hero-photo {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(16, 42, 67, 0.12);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+        }
+
+        .info-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0 3rem;
+        }
+
+        .info-box {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-box span {
+            color: var(--muted);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .gallery-grid img {
+            height: 230px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .related-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .user-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .auth-link-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary) !important;
+        }
+
+        @media (max-width: 800px) {
+            .destination-hero,
+            .info-strip,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-photo img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-row">
+            <a class="brand" href="../main.html">
+                <img src="../image/logo.jpg" alt="Free Promote Travel logo">
+                <div>
+                    <strong>Free Promote Travel</strong>
+                    <p>Destination detail</p>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <a href="../main.html">Home</a>
+                <a href="../main.html#destinations">Destinations</a>
+                <a href="../main.html#contact">Contact</a>
+                <a id="authLink" href="../login.html" class="auth-link-item">
+                    <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span id="authText">Login</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="reveal">
+        <div class="breadcrumb">
+            <a href="../main.html">Home</a><span>/</span>
+            <a href="../main.html#destinations">Destinations</a><span>/</span>
+            Honda Powersports
+        </div>
+        <section class="destination-hero">
+            <div>
+                <p class="eyebrow">Adventure Destination</p>
+                <h1>Honda Powersports</h1>
+                <p>
+                    Honda Powersports is for visitors who love speed, outdoor riding, and
+                    powerful machines. It features motorcycles, dirt bikes, ATVs, scooters,
+                    and performance vehicles built for adventure.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="https://powersports.honda.com/" target="_blank" rel="noopener">Visit Website</a>
+                    <a class="btn btn-outline" href="../main.html#destinations">Back to Destinations</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="../image/Honda/2027-crf450r-hero-banner-desktop.avif" alt="Honda dirt bike racing">
+            </div>
+        </section>
+
+        <section class="info-strip">
+            <div class="info-box">
+                <strong>Best For</strong>
+                <span>Motorcycle fans and adventure riders</span>
+            </div>
+            <div class="info-box">
+                <strong>Experience</strong>
+                <span>Sport bikes, off-road bikes, ATVs, and scooters</span>
+            </div>
+            <div class="info-box">
+                <strong>Vibe</strong>
+                <span>Fast, modern, powerful, and outdoor-focused</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <p class="eyebrow">Highlights</p>
+                <h2>Why visitors may like it</h2>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <img src="../image/Honda/2025-cbr1000rr-r-fireblade-sp-grand_prix_red-1505x923.avif" alt="Honda sport motorcycle">
+                    <h3>Sport Motorcycles</h3>
+                    <p>Honda is well known for strong, stylish motorcycles made for road performance.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Honda/2027-crf250r-gallery-04.avif" alt="Honda off-road motorcycle">
+                    <h3>Off-road Adventure</h3>
+                    <p>Dirt bikes and trail models make the brand exciting for outdoor travel lovers.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Honda/home-pioneer-social-grid.avif" alt="Honda powersports vehicle">
+                    <h3>Reliable Design</h3>
+                    <p>Honda vehicles are popular because they balance performance, safety, and reliability.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Honda/2026-racing-img-3.avif" alt="Honda racing scene">
+                    <h3>Racing Energy</h3>
+                    <p>The Honda Powersports style connects with racing, motion, and active lifestyles.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <p class="eyebrow">Gallery</p>
+                <h2>Honda Powersports photos</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="../image/Honda/7.avif" alt="Honda powersports photo 1">
+                <img src="../image/Honda/8.avif" alt="Honda powersports photo 2">
+                <img src="../image/Honda/9.avif" alt="Honda powersports photo 3">
+            </div>
+        </section>
+
+        <section class="related-section">
+            <div class="section-header">
+                <p class="eyebrow">More to explore</p>
+                <h2>Other destinations you might like</h2>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <img src="../image/KirisuFarm-web/Picture1.png" alt="Kirisur Farm">
+                    <h3>Kirisur Farm</h3>
+                    <p>Relaxing countryside views and fresh farm products.</p>
+                    <a href="kirisurfarm.html" class="link">Learn more →</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col about">
+                <img src="../image/logo.jpg" alt="Free Promote Logo">
+                <p>We're travel enthusiasts who got tired of tourist traps and bad deals. Started this to help people actually enjoy their trips without the headache.</p>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../main.html#destinations">Destinations</a></li>
+                    <li><a href="../main.html#packages">Packages</a></li>
+                    <li><a href="../main.html#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact</h4>
+                <p>Phone: +855-15214262</p>
+                <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
+            </div>
+
+            <div class="footer-col newsletter">
+                <h4>Stay Updated</h4>
+                <form class="footer-newsletter">
+                    <input type="email" placeholder="Your email">
+                    <button class="btn" type="submit">Join</button>
+                </form>
+                <div class="social">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sync authentication state with localStorage
+        window.addEventListener('DOMContentLoaded', function() {
+            const currentUser = localStorage.getItem('currentUser');
+            const authLink = document.getElementById('authLink');
+            const authText = document.getElementById('authText');
+
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                authText.textContent = user.name;
+                authLink.href = '../profile.html';
+            }
+        });
+    </script>
+</body>
+</html>
