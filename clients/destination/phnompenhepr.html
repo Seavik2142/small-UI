@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip.com Clone - Complete Polished Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Resets */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        /* -------------------------------------------------------------------------
+           1. TOP NAVIGATION NAVBAR
+        ------------------------------------------------------------------------- */
+        .header-navbar {
+            background-color: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 64px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .nav-left-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .brand-logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-logo span {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 400;
+            position: relative;
+            top: -2px;
+            margin-left: 2px;
+        }
+
+        .nav-menu-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 20px 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-menu-links a:hover,
+        .nav-menu-links a.active {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .nav-utility-item {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .btn-auth-register {
+            background-color: #ffffff;
+            color: #0f294d;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* -------------------------------------------------------------------------
+           2. HERO BANNER & SEARCH BAR
+        ------------------------------------------------------------------------- */
+        .hero-banner-section {
+            height: 420px;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1569155021577-0a4b27ff8fa6?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10%;
+            position: relative;
+        }
+
+        .hero-banner-section h1 {
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .search-bar-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 55%;
+            max-width: 700px;
+            height: 48px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-bar-box input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            font-size: 15px;
+            color: #333333;
+        }
+
+        .search-bar-box i {
+            color: #666666;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* -------------------------------------------------------------------------
+           3. MAIN LAYOUT AND GRID FILTERS
+        ------------------------------------------------------------------------- */
+        .main-content-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px 60px 20px;
+        }
+
+        .filter-pills-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .filter-pill {
+            background-color: #ffffff;
+            border: 1px solid #dbdbdb;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #333333;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.15s;
+        }
+
+        .filter-pill:hover {
+            border-color: #222222;
+            background-color: #f7f7f7;
+        }
+
+        .results-meta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .results-count-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f294d;
+        }
+
+        .sort-dropdown-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .dropdown-select {
+            border: 1px solid #dbdbdb;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #333333;
+            outline: none;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* -------------------------------------------------------------------------
+           4. PRODUCT ITEMS CARDS GALLERY
+        ------------------------------------------------------------------------- */
+        .products-grid-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        .product-card-item {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #ededed;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: 320px;
+        }
+
+        .product-img-frame {
+            width: 100%;
+            height: 150px;
+            position: relative;
+            background-color: #f5f5f5;
+        }
+
+        .product-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ribbon-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(254, 144, 3, 0.9);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            z-index: 5;
+        }
+
+        .evisa-overlay-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            z-index: 5;
+        }
+
+        .evisa-overlay-center i {
+            font-size: 20px;
+        }
+
+        .card-details-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f294d;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 6px;
+            margin: 4px 0 8px 0;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background-color: #f5f7fa;
+            color: #666666;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .rating-line {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .rating-score {
+            background-color: #225cff;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 4px 4px 4px 0;
+            font-size: 11px;
+        }
+
+        .rating-text {
+            color: #225cff;
+            font-weight: 700;
+        }
+
+        .booking-count {
+            color: #666666;
+        }
+
+        .price-row {
+            margin-top: auto;
+            font-size: 12px;
+            color: #666666;
+            padding-top: 4px;
+        }
+
+        .price-row strong {
+            font-size: 16px;
+            color: #0f294d;
+            font-weight: 700;
+        }
+
+        /* -------------------------------------------------------------------------
+           5. EXCLUSIVE OFFERS PROMO BANNER
+        ------------------------------------------------------------------------- */
+        .promo-banner-wrapper {
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            width: 100%;
+        }
+
+        .promo-left-side {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .promo-icon-graphics {
+            width: 44px;
+            height: 44px;
+            background: radial-gradient(circle, #fff3cd 0%, #ffebbc 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            position: relative;
+        }
+
+        .promo-icon-graphics::after {
+            content: '%';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            background: #ff4d4f;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .promo-text-details h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f294d;
+            margin-bottom: 6px;
+        }
+
+        .promo-tags-flex {
+            display: flex;
+            gap: 8px;
+        }
+
+        .pink-coupon-tag {
+            background-color: #fff1f0;
+            border: 1px solid #ffa39e;
+            color: #cf1322;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .btn-claim-promo {
+            background-color: #225cff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
+
+        .btn-claim-promo:hover {
+            background-color: #0040dd;
+        }
+
+        /* -------------------------------------------------------------------------
+           6. EXPLORE EXPERIENCES & FAQ ACCORDION MODULES
+        ------------------------------------------------------------------------- */
+        .section-wrapper-block {
+            margin-top: 54px;
+            width: 100%;
+        }
+
+        .sub-header-desc {
+            font-size: 14px;
+            color: #666666;
+            margin-top: 4px;
+            margin-bottom: 20px;
+        }
+
+        .experience-pills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .exp-pill {
+            background-color: #f0f2f5;
+            color: #0f294d;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: background-color 0.15s, color 0.15s;
+            user-select: none;
+        }
+
+        .exp-pill:hover {
+            background-color: #e4e7ed;
+        }
+
+        .exp-pill.active {
+            background-color: #0f294d;
+            color: #ffffff;
+        }
+
+        .faq-accordion-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(15, 41, 77, 0.05);
+            border: 1px solid #ededed;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .faq-row-item {
+            border-bottom: 1px solid #f6f6f6;
+        }
+
+        .faq-row-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-trigger-header {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            color: #0f294d;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
+
+        .faq-trigger-header:hover {
+            background-color: #fafbfc;
+        }
+
+        .faq-trigger-header i {
+            color: #8592a6;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        /* -------------------------------------------------------------------------
+           7. REVIEWS & TRIP MOMENTS
+        ------------------------------------------------------------------------- */
+        .reviews-section-container {
+            margin-top: 54px;
+            width: 100%;
+        }
+
+        .reviews-section-container h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f294d;
+            margin-bottom: 20px;
+        }
+
+        .reviews-flex-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        .review-moment-card {
+            background-color: #ffffff;
+            border: 1px solid #ededed;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 16px rgba(15, 41, 77, 0.02);
+            min-height: 260px;
+        }
+
+        .star-rating-row {
+            color: #ffb800;
+            font-size: 16px;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+        }
+
+        .review-context-meta {
+            font-size: 14px;
+            color: #333333;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .review-context-meta a {
+            color: #225cff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .review-context-meta a:hover {
+            text-decoration: underline;
+        }
+
+        .reviewer-user-date {
+            font-size: 13px;
+            color: #999999;
+            margin-bottom: 14px;
+        }
+
+        .review-body-text {
+            font-size: 14px;
+            color: #333333;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* -------------------------------------------------------------------------
+           8. TRIP.COM PICKS TABS & MATRIX
+        ------------------------------------------------------------------------- */
+        .picks-tabs-section {
+            margin-top: 54px;
+            width: 100%;
+        }
+
+        .picks-tabs-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f294d;
+            margin-bottom: 20px;
+        }
+
+        .tab-headers-row {
+            display: flex;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            background-color: #f0f2f5;
+            color: #455873;
+            padding: 12px 24px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.15s ease;
+        }
+
+        .tab-btn.active {
+            background-color: #0f294d;
+            color: #ffffff;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background-color: #e4e7ed;
+            color: #0f294d;
+        }
+
+        .tab-content-panel {
+            border: 1px solid #eef1f6;
+            background-color: #ffffff;
+            border-radius: 0 8px 8px 8px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(15, 41, 77, 0.03);
+        }
+
+        .links-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            row-gap: 18px;
+            column-gap: 20px;
+        }
+
+        .links-matrix-grid a {
+            font-size: 14px;
+            color: #455873;
+            text-decoration: none;
+            line-height: 1.4;
+            transition: color 0.15s ease;
+        }
+
+        .links-matrix-grid a:hover {
+            color: #225cff;
+            text-decoration: underline;
+        }
+
+        /* -------------------------------------------------------------------------
+           9. GLOBAL SITE FOOTER Layout
+        ------------------------------------------------------------------------- */
+        .global-footer-container {
+            margin-top: 64px;
+            border-top: 1px solid #ededed;
+            padding-top: 48px;
+            padding-bottom: 40px;
+            width: 100%;
+        }
+
+        .footer-columns-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f294d;
+            margin-bottom: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: #455873;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #225cff;
+            text-decoration: underline;
+        }
+
+        .social-icons-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-circle-link {
+            width: 36px;
+            height: 36px;
+            background-color: #6c7c93;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.15s ease;
+        }
+
+        .social-circle-link:hover {
+            background-color: #0f294d;
+        }
+
+        .utility-sub-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #8592a6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+        }
+
+        .badges-inline-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 36px;
+        }
+
+        .payment-badge-box {
+            width: 52px;
+            height: 32px;
+            border: 1px solid #e6ebf4;
+            border-radius: 4px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 700;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            user-select: none;
+        }
+
+        .partners-logos-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .partner-logo-txt {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .breadcrumb-footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .breadcrumb-footer a {
+            color: #225cff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header-navbar">
+        <div class="nav-left-group">
+            <a href="#" class="brand-logo">Trip<span>.com</span></a>
+            <ul class="nav-menu-links">
+                <li><a href="#">Hotels & Homes</a></li>
+                <li><a href="#">Flights</a></li>
+                <li><a href="#">Car services</a></li>
+                <li><a href="#" class="active">Attractions & Tours</a></li>
+                <li><a href="#"><i class="fa-solid fa-ellipsis"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right-group">
+            <a href="#" class="nav-utility-item"><i class="fa-solid fa-mobile-screen-button"></i> App</a>
+            <div class="nav-utility-item">🇦🇪 AED</div>
+            <div class="nav-utility-item">Customer support</div>
+            <div class="nav-utility-item">Find bookings</div>
+            <button class="btn-auth-register">Sign in/register</button>
+        </div>
+    </header>
+
+    <section class="hero-banner-section">
+        <h1>Top picks for Phnom Penh</h1>
+        <div class="search-bar-box">
+            <input type="text" placeholder="Search attractions or local attractions & tours">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </section>
+
+    <main class="main-content-layout">
+
+        <div class="filter-pills-row">
+            <div class="filter-pill">Attractions & Tours category <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="filter-pill">Book now for today</div>
+            <div class="filter-pill">Book now for tomorrow</div>
+        </div>
+
+        <div class="results-meta-header">
+            <div class="results-count-text">7 results for Phnom Penh</div>
+            <div class="sort-dropdown-box">
+                <span>Sort by</span>
+                <select class="dropdown-select">
+                    <option>Recommended</option>
+                    <option>Price: low to high</option>
+                    <option>Top Rated</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="products-grid-row">
+
+            <div class="product-card-item">
+                <div class="product-img-frame">
+                    <span class="ribbon-tag">Private Transfer</span>
+                    <img src="https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=400&q=80"
+                        alt="Private Transfer">
+                </div>
+                <div class="card-details-info">
+                    <div class="product-title-text">Private Transfer: Phnom Penh to/from Sihanoukville Ferry Pier for
+                        Koh Rong</div>
+                    <div class="badge-row">
+                        <span class="meta-badge">Duration: 4–5 hrs</span>
+                    </div>
+                    <div class="price-row">
+                        From <strong>AED 319.38</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card-item">
+                <div class="product-img-frame">
+                    <img src="https://images.unsplash.com/photo-1569155021577-0a4b27ff8fa6?auto=format&fit=crop&w=400&q=80"
+                        alt="Siem Reap Car">
+                </div>
+                <div class="card-details-info">
+                    <div class="product-title-text">Phnom Penh To/From Siem Reap Private Car Transfer</div>
+                    <div class="badge-row">
+                        <span class="meta-badge">Duration: 6 hrs</span>
+                    </div>
+                    <div class="rating-line">
+                        <span class="rating-score">4.9/5</span>
+                        <span class="rating-text">Perfect</span>
+                        <span class="booking-count">&middot; 8 reviews</span>
+                    </div>
+                    <div class="price-row">
+                        From <strong>AED 299.42</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card-item">
+                <div class="product-img-frame">
+                    <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=400&q=80"
+                        alt="Visa Palace">
+                    <div class="evisa-overlay-center">
+                        <i class="fa-solid fa-passport"></i>
+                        <span>e-Visa</span>
+                        <strong>Cambodia</strong>
+                    </div>
+                </div>
+                <div class="card-details-info">
+                    <div class="product-title-text">Cambodia tourist e-Visa Global acceptance Service</div>
+                    <div class="rating-line">
+                        <span class="rating-score">4.1/5</span>
+                        <span class="rating-text">Very good</span>
+                        <span class="booking-count">&middot; 17 reviews</span>
+                    </div>
+                    <div class="price-row">
+                        From <strong>AED 154.27</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card-item">
+                <div class="product-img-frame">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=400&q=80"
+                        alt="VIP Lounge View">
+                </div>
+                <div class="card-details-info">
+                    <div class="product-title-text">Priority Pass PP card global airport VIP lounge for
+                        transfer/waiting...</div>
+                    <div class="badge-row">
+                        <span class="meta-badge">Duration: 3 hrs</span>
+                        <span class="meta-badge">Mandarin</span>
+                    </div>
+                    <div class="rating-line">
+                        <span class="rating-score">5.0/5</span>
+                        <span class="rating-text">Perfect</span>
+                        <span class="booking-count">&middot; 1 review</span>
+                    </div>
+                    <div class="price-row">
+                        From <strong>AED 106.04</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card-item">
+                <div class="product-img-frame">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=400&q=80"
+                        alt="VIP lounge Alternative">
+                </div>
+                <div class="card-details-info">
+                    <div class="product-title-text">Priority Pass PP card global airport VIP lounge for
+                        transfer/waiting...</div>
+                    <div class="badge-row">
+                        <span class="meta-badge">Duration: 3 hrs</span>
+                        <span class="meta-badge">Mandarin</span>
+                    </div>
+                    <div class="price-row">
+                        From <strong>AED 106.04</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card-item">
+                <div class="product-img-frame">
+                    <img src="https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=400&q=80"
+                        alt="Kampot Car View">
+                </div>
+                <div class="card-details-info">
+                    <div class="product-title-text">Phnom Penh To/From Kampot Private Car Transfer Service</div>
+                    <div class="badge-row">
+                        <span class="meta-badge">Duration: 3 hrs</span>
+                    </div>
+                    <div class="price-row">
+                        From <strong>AED 219.58</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card-item">
+                <div class="product-img-frame">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+                        alt="China Tower Sky">
+                </div>
+                <div class="card-details-info">
+                    <div class="product-title-text">China Tourist Visa for Multiple Persons (Minimum 2 persons)</div>
+                    <div class="rating-line">
+                        <span class="rating-score">5.0/5</span>
+                        <span class="rating-text">Perfect</span>
+                        <span class="booking-count">&middot; 1 review</span>
+                    </div>
+                    <div class="price-row">
+                        From <strong>AED 195.12</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="promo-banner-wrapper">
+            <div class="promo-left-side">
+                <div class="promo-icon-graphics">
+                    <i class="fa-solid fa-gift" style="color: #fe9003;"></i>
+                </div>
+                <div class="promo-text-details">
+                    <h3>Exclusive offers for you</h3>
+                    <div class="promo-tags-flex">
+                        <span class="pink-coupon-tag">New user 5% off</span>
+                        <span class="pink-coupon-tag">New user 10% off</span>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-claim-promo">Claim</button>
+        </div>
+
+        <div class="breadcrumb-footer">
+            <a href="#">Trip.com</a> &gt; <span>Phnom Penh</span>
+        </div>
+
+        <div class="section-wrapper-block">
+            <h2 style="font-size: 24px; font-weight: 700; color: #0f294d;">Explore top experiences</h2>
+            <p class="sub-header-desc">See what other travelers love, based on ratings and bookings</p>
+
+            <div class="experience-pills-container">
+                <span class="exp-pill active">All</span>
+                <span class="exp-pill">Attractions (3681)</span>
+                <span class="exp-pill">Day tours (19)</span>
+                <span class="exp-pill">Boat experiences (4)</span>
+                <span class="exp-pill">Cultural experiences (1)</span>
+                <span class="exp-pill">Food & drink (3)</span>
+                <span class="exp-pill">Spa & wellness (1)</span>
+                <span class="exp-pill">Travel photography (1)</span>
+                <span class="exp-pill">SIM card (13)</span>
+                <span class="exp-pill">City pass (3)</span>
+                <span class="exp-pill">Travel extras (2)</span>
+                <span class="exp-pill">Wi-Fi (1)</span>
+                <span class="exp-pill">Visas (2)</span>
+                <span class="exp-pill">Shuttle bus (1)</span>
+            </div>
+        </div>
+
+        <div class="section-wrapper-block" style="margin-top: 32px;">
+            <h2 style="font-size: 24px; font-weight: 700; color: #0f294d;">Frequently asked questions about Phnom Penh
+            </h2>
+
+            <div class="faq-accordion-container">
+                <div class="faq-row-item">
+                    <button class="faq-trigger-header">
+                        <span>How many are available in Phnom Penh on Trip.com?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="faq-row-item">
+                    <button class="faq-trigger-header">
+                        <span>What are the best in Phnom Penh?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="faq-row-item">
+                    <button class="faq-trigger-header">
+                        <span>What are the top-rated in Phnom Penh?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="faq-row-item">
+                    <button class="faq-trigger-header">
+                        <span>How can I contact Trip.com customer support?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="faq-row-item">
+                    <button class="faq-trigger-header">
+                        <span>Can I change or cancel my booking?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="faq-row-item">
+                    <button class="faq-trigger-header">
+                        <span>How can I get discounted prices?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-section-container">
+            <h2>Reviews/Trip Moments</h2>
+
+            <div class="reviews-flex-grid">
+                <div class="review-moment-card">
+                    <div class="star-rating-row">★★★★★</div>
+                    <div class="review-context-meta">
+                        Reviews: <a href="#">Phnom Penh To/From Siem Reap Private Car</a>
+                    </div>
+                    <div class="reviewer-user-date">Guest User &nbsp;2026-01-06</div>
+                    <div class="review-body-text">
+                        We were met at Phnom Penh airport with a sign. Everything was organized perfectly. On the way to
+                        Siem Reap, we stopped several times ...
+                    </div>
+                </div>
+
+                <div class="review-moment-card">
+                    <div class="star-rating-row">★★★★★</div>
+                    <div class="review-context-meta">
+                        Reviews: <a href="#">Cambodia tourist e-Visa Global acceptance</a>
+                    </div>
+                    <div class="reviewer-user-date">Guest User &nbsp;2025-11-05</div>
+                    <div class="review-body-text">
+                        My visas book though Trip were so easy wished I had know before I did the others
+                    </div>
+                </div>
+
+                <div class="review-moment-card">
+                    <div class="star-rating-row">★★★★★</div>
+                    <div class="review-context-meta">
+                        Reviews: <a href="#">Priority Pass PP card global airport VIP lounge for
+                            transfer/waiting/overnight | single-use card/multi-use card/annual unlimited card |
+                            worldwide acceptance</a>
+                    </div>
+                    <div class="reviewer-user-date">Guest User &nbsp;2026-06-01</div>
+                    <div class="review-body-text">
+                        I quickly obtained my Priority Pass after ordering and smoothly entered the VIP lounge. Highly
+                        recommended!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="picks-tabs-section">
+            <h2>Trip.com picks</h2>
+
+            <div class="tab-headers-row">
+                <button class="tab-btn active">Popular products</button>
+                <button class="tab-btn">Popular activities</button>
+                <button class="tab-btn">More popular destinations</button>
+            </div>
+
+            <div class="tab-content-panel">
+                <div class="links-matrix-grid">
+                    <a href="#">JR Pass (Japan Rail Pass)</a>
+                    <a href="#">JR East Pass</a>
+                    <a href="#">JR West Pass</a>
+                    <a href="#">JR Hokkaido Pass</a>
+                    <a href="#">JR Kyushu Pass</a>
+                    <a href="#">JR Shikoku Pass</a>
+                    <a href="#">JR Hokkaido Rail Pass</a>
+                    <a href="#">JR Pass Kansai Hiroshima Area</a>
+                    <a href="#">JR Pass All Kyushu Rail Pass</a>
+                    <a href="#">JR Pass Sapporo Furano Area</a>
+                    <a href="#">JR Pass Sapporo Noboribetsu Area</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="global-footer-container">
+            <div class="footer-columns-grid">
+
+                <div class="footer-column">
+                    <h3>Contact us</h3>
+                    <ul>
+                        <li><a href="#">Customer support</a></li>
+                        <li><a href="#">Service Guarantee</a></li>
+                        <li><a href="#">More service info</a></li>
+                    </ul>
+                    <div class="social-icons-row">
+                        <a href="#" class="social-circle-link"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-circle-link"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-circle-link"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">About Trip.com</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Statement</a></li>
+                        <li><a href="#">Accessibility Statement</a></li>
+                        <li><a href="#">About Trip.com Group</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Other services</h3>
+                    <ul>
+                        <li><a href="#">Investor relations</a></li>
+                        <li><a href="#">Trip.com Rewards</a></li>
+                        <li><a href="#">Affiliate program</a></li>
+                        <li><a href="#">List your property</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <div class="utility-sub-title">Payment methods</div>
+                    <div class="badges-inline-flex">
+                        <div class="payment-badge-box" style="color: #0073b7;">Union</div>
+                        <div class="payment-badge-box" style="color: #eb001b;">MC</div>
+                        <div class="payment-badge-box" style="color: #1a1f71;">Visa</div>
+                        <div class="payment-badge-box" style="color: #007cc4;">Amex</div>
+                        <div class="payment-badge-box" style="color: #333333;">JCB</div>
+                        <div class="payment-badge-box" style="color: #003366;">Din</div>
+                        <div class="payment-badge-box" style="color: #f7931a;">Disc</div>
+                        <div class="payment-badge-box" style="color: #000000;"><i class="fa-brands fa-apple-pay"
+                                style="font-size: 20px;"></i></div>
+                        <div class="payment-badge-box" style="color: #00a0e9; font-size: 9px;">Alipay</div>
+                        <div class="payment-badge-box" style="color: #6042a6;">Gift</div>
+                    </div>
+
+                    <div class="utility-sub-title">Our partners</div>
+                    <div class="partners-logos-row">
+                        <span class="partner-logo-txt" style="color: #4285F4;">G<span
+                                style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span
+                                style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span
+                                style="color:#EA4335;">e</span></span>
+                        <span class="partner-logo-txt" style="color: #00af87;"><i class="fa-solid fa-face-smile"></i>
+                            tripadvisor</span>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
