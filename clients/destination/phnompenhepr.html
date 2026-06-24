@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phnom Penh Services | Free Promote Travel</title>
+    <link rel="stylesheet" href="../main.css">
+    <style>
+        /* Global Structural Framing - Restricts wide stretching */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Professional UI Enhancements */
+        .breadcrumb {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            opacity: 0.5;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Hero Layout Bounds - Enhanced to make the cover section significantly bigger */
+        .destination-hero {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem 0 3rem;
+        }
+
+        .destination-hero h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            color: var(--dark, #102a43);
+            font-weight: 800;
+        }
+
+        .destination-hero p {
+            color: var(--muted);
+            margin: 1.5rem 0 2.5rem;
+            line-height: 1.6;
+            font-size: 1.05rem;
+            text-align: left;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Taller Image Container for a much bigger display cover */
+        .hero-photo {
+            overflow: hidden;
+            height: 480px;
+            /* Increased from 400px to 550px for a massive cover presentation */
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(16, 42, 67, 0.12);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Centered Configuration Strips */
+        .info-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 1.5rem 0 3.5rem;
+        }
+
+        .info-box {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--dark, #102a43);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-box span {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* -------------------------------------------------------------------------
+           CLEAN EYE-LEVEL CATALOG GRID
+        ------------------------------------------------------------------------- */
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .eyebrow {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .category-card {
+            background: transparent;
+            border: none;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 330px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .category-card-content {
+            padding: 1rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .category-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--dark, #102a43);
+        }
+
+        .category-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-price-label {
+            margin-top: auto;
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1rem;
+            border-top: 1px dashed var(--border);
+            padding-top: 0.85rem;
+        }
+
+        /* -------------------------------------------------------------------------
+           GALLERY DESIGN
+        ------------------------------------------------------------------------- */
+        .section {
+            margin-top: 4.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-grid img {
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .related-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 4.5rem;
+        }
+
+        .user-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .auth-link-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary) !important;
+            cursor: pointer;
+        }
+
+        /* Responsive Targets */
+        @media (max-width: 960px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .destination-hero,
+            .info-strip,
+            .gallery-grid,
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-hero {
+                padding: 1.5rem;
+            }
+
+            .hero-photo {
+                height: 380px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="topbar">
+            <div
+                style="max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; padding: 0 24px;">
+                <span>Call us: +855-15214262</span>
+                <nav class="top-links">
+                    <a href="../main.html#destinations">Destinations</a>
+                    <a href="../main.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+        <div class="nav-row" style="max-width: 1200px; margin: 0 auto; width: 100%; padding: 14px 24px;">
+            <a class="brand" href="../main.html">
+                <img src="../image/logo.jpg" alt="Free Promote Travel logo">
+                <div>
+                    <strong>Free Promote Travel</strong>
+                    <p>Destination detail</p>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <a href="../main.html">Home</a>
+                <a href="../main.html#destinations">Destinations</a>
+                <a href="../main.html#contact">Contact</a>
+                <a id="authLink" href="../login.html" class="auth-link-item">
+                    <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span id="authText">Login</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-container reveal">
+
+        <div class="breadcrumb">
+            <a href="../main.html">Home</a><span>/</span>
+            <a href="../main.html#destinations">Destinations</a><span>/</span>
+            Phnom Penh Services
+        </div>
+
+        <section class="destination-hero">
+            <div>
+                <p class="eyebrow">Trip</p>
+                <h1>Phnom Penh Services</h1>
+                <p>
+                    Discover the active local infrastructure of Phnom Penh. Free Promote Travel balances complete
+                    single-entry documentation, airport VIP lounge transfers, and private inter-city shuttle networks
+                    built safely for Cambodian riders and global active lifestyle enthusiasts.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#">Visit Website</a>
+                    <a class="btn btn-outline" href="../main.html#destinations">Back to Destinations</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="../image/Trip.com/23.jpg" alt="Phnom Penh Skyline Grid">
+            </div>
+        </section>
+
+        <section class="info-strip">
+            <div class="info-box">
+                <strong>IDEAL FOR</strong>
+                <span>Inter-city transfers and document setup</span>
+            </div>
+            <div class="info-box">
+                <strong>HIGHLIGHTS</strong>
+                <span>Airport terminal lounges, single e-visas, and private vans</span>
+            </div>
+            <div class="info-box">
+                <strong>ATMOSPHERE</strong>
+                <span>Efficient, reliable, active, and connection-focused</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <p class="eyebrow">Highlights</p>
+                <h2>Available Travel Packages</h2>
+            </div>
+
+            <div class="category-grid" id="productGrid"></div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <p class="eyebrow">Gallery</p>
+                <h2>Phnom Penh Transport</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="../image/Trip.com/6.jpg">
+                <img src="../image/Trip.com/10.jpg">
+                <img src="../image/Trip.com/8.png">
+            </div>
+        </section>
+
+        <section class="related-section">
+            <div class="section-header">
+                <p class="eyebrow">More to explore</p>
+                <h2>Other destinations you might like</h2>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <img src="../image/Trip.com/9.jpg" alt="Booking">
+                    <div class="category-card-content">
+                        <h3>Booking</h3>
+                        <p>Big savings on homes, hotels, flights, car rentals, taxis, and attractions – build your
+                            perfect trip on any budget.</p>
+                        <a href="bookingcam.html"
+                            style="color: var(--primary); font-weight: 600; text-decoration: none; margin-top: auto;">Learn
+                            more →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col about">
+                <img src="../image/logo.jpg" alt="Free Promote Logo"
+                    style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;">
+                <p>We're travel enthusiasts who got tired of tourist traps and bad deals. Started this to help people
+                    actually enjoy their trips without the headache.</p>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../main.html#destinations">Destinations</a></li>
+                    <li><a href="../main.html#packages">Packages</a></li>
+                    <li><a href="../main.html#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact</h4>
+                <p style="margin-bottom: 0.5rem;">Phone: +855-15214262</p>
+                <p>Email: <a href="mailto:Freepromote@gmail.com"
+                        style="color: var(--primary); text-decoration: none;">Freepromote@gmail.com</a></p>
+            </div>
+
+            <div class="footer-col newsletter">
+                <h4>Stay Updated</h4>
+                <form class="footer-newsletter">
+                    <input type="email" placeholder="Your email">
+                    <button class="btn" type="submit">Join</button>
+                </form>
+                <div class="social">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cleaned Mockup Packages Storage - local image paths added
+        const defaultPackages = [
+            {
+                title: "Private Transfer: Phnom Penh to Sihanoukville Ferry Pier",
+                img: "../image/Trip.com/1.jpg"
+            },
+            {
+                title: "Phnom Penh To/From Siem Reap Private Car Transfer",
+                img: "../image/Trip.com/3.jpg"
+            },
+            {
+                title: "Cambodia Tourist e-Visa Global Acceptance Service",
+                img: "../image/Trip.com/4.jpg"
+            },
+            {
+                title: "Priority Pass Global Airport VIP Lounge Single Entry",
+                img: "../image/Trip.com/5.jpg"
+            }
+        ];
+
+        function getPackages() {
+            const stored = localStorage.getItem('custom_packages');
+            return stored ? [...defaultPackages, ...JSON.parse(stored)] : defaultPackages;
+        }
+
+        function renderPackages() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            getPackages().forEach(pkg => {
+                const card = document.createElement('article');
+                card.className = 'category-card';
+
+                // Render structure displays image and title cleanly
+                card.innerHTML = `
+                    <img src="${pkg.img || ''}" alt="Tour Option Thumbnail">
+                    <div class="category-card-content">
+                        <h3>${pkg.title || ""}</h3>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize state engine triggers
+        window.addEventListener('DOMContentLoaded', function () {
+            renderPackages();
+            const currentUser = localStorage.getItem('currentUser');
+            const authLink = document.getElementById('authLink');
+            const authText = document.getElementById('authText');
+
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                authText.textContent = user.name;
+                authLink.href = '../profile.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

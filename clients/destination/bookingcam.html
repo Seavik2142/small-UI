@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phnom Penh Services | Free Promote Travel</title>
+    <link rel="stylesheet" href="../main.css">
+    <style>
+        /* Professional Honda UI Layout System Framework Rules */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            opacity: 0.5;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Honda Native Twin-Column Grid Structure Alignment */
+        .destination-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem 0 3rem;
+        }
+
+        .destination-hero h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.05;
+            color: var(--dark, #102a43);
+            font-weight: 800;
+        }
+
+        .destination-hero p {
+            color: var(--muted);
+            margin: 1.25rem 0 1.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-photo {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(16, 42, 67, 0.12);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+        }
+
+        /* Honda Metadata Information Blocks */
+        .info-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0 3rem;
+        }
+
+        .info-box {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--dark, #102a43);
+        }
+
+        .info-box span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Honda 4-Column Presentation Content Grid */
+        .section {
+            margin-top: 4rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            width: 100%;
+        }
+
+        .category-card {
+            background: transparent;
+            border: none;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card img {
+            height: 230px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark, #102a43);
+        }
+
+        .category-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Gallery Image Presentation */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .gallery-grid img {
+            height: 230px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .user-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .auth-link-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary) !important;
+        }
+
+        @media (max-width: 800px) {
+
+            .destination-hero,
+            .info-strip,
+            .gallery-grid,
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-photo img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="topbar">
+            <span>Call us: +855-15214262</span>
+            <nav class="top-links">
+                <a href="../main.html#destinations">Destinations</a>
+                <a href="../main.html#contact">Contact</a>
+            </nav>
+        </div>
+        <div class="nav-row">
+            <a class="brand" href="../main.html">
+                <img src="../image/logo.jpg" alt="Free Promote Travel logo">
+                <div>
+                    <strong>Free Promote Travel</strong>
+                    <p>Destination detail</p>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <a href="../main.html">Home</a>
+                <a href="../main.html#destinations">Destinations</a>
+                <a href="../main.html#contact">Contact</a>
+                <a id="authLink" href="../login.html" class="auth-link-item">
+                    <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span id="authText">Login</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-container reveal">
+        <div class="breadcrumb">
+            <a href="../main.html">Home</a><span>/</span>
+            <a href="../main.html#destinations">Destinations</a><span>/</span>
+            Cambodia Services
+        </div>
+
+        <section class="destination-hero">
+            <div>
+                <p class="eyebrow">BOOKING</p>
+                <h1>Explore and find Hotels in Cambodia</h1>
+                <p>
+                    Cambodia is a fascinating destination known for its ancient temples, rich culture, beautiful
+                    beaches, and stunning landscapes. Highlights include the world-famous Angkor temples in Siem Reap,
+                    especially Angkor Wat, Angkor Thom, and Ta Prohm. In Phnom Penh, visitors can explore the Royal
+                    Palace, Silver Pagoda, and National Museum. The country offers a wide range of accommodations, from
+                    luxury hotels to budget-friendly guesthouses, making it ideal for all types of travelers.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#">Visit Website</a>
+                    <a class="btn btn-outline" href="../main.html#destinations">Back to Destinations</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="../image/Booking.com/1.jpg" alt="Angkor Wat Reflection View">
+            </div>
+        </section>
+
+        <section class="info-strip">
+            <div class="info-box">
+                <strong>IDEAL FOR</strong>
+                <span>Ancient site exploration and cultural weekend getaways</span>
+            </div>
+            <div class="info-box">
+                <strong>HIGHLIGHTS</strong>
+                <span>Angkor Wat excursions, heritage museums, and sunset boat tours</span>
+            </div>
+            <div class="info-box">
+                <strong>ATMOSPHERE</strong>
+                <span>Historical, peaceful, breathtaking, and culturally enriching</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <p class="eyebrow">Highlights</p>
+                <h2>Top destinations for Cambodia city trips</h2>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <img src="../image/Booking.com/3.jpg" alt="Siem Reap">
+                    <h3>Siem Reap</h3>
+                    <p>Home to ancient temples, iconic historical culture, and scenic night markets.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Booking.com/4.jpg" alt="Phnom Penh">
+                    <h3>Phnom Penh</h3>
+                    <p>The bustling capital with rich history, riverside pathways, and cultural architecture.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Booking.com/6.jpg" alt="Kampot">
+                    <h3>Kampot</h3>
+                    <p>A tranquil town famous for peaceful river views, organic farms, and nature retreats.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Booking.com/7.jpg" alt="Sihanoukville">
+                    <h3>Sihanoukville</h3>
+                    <p>Stunning coastal lookouts, relaxing white-sand beaches, and tropical island gateways.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <p class="eyebrow">Regions</p>
+                <h2>Hotels in the most popular regions</h2>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <img src="../image/Booking.com/8.jpg" alt="Siem Reap Province">
+                    <h3>Le Grande Indochine Hotel</h3>
+                    <p>Siem Reap 0.9 km from centre
+                        Located in Siem Reap, 8.8 km from Angkor Wat, The Tree - Adults only provides accommodation with
+                        an outdoor swimming pool, free private parking, a garden and a restaurant.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Booking.com/9.jpg" alt="Phnom Penh Municipality">
+                    <h3>Chaiya Palace Hotel</h3>
+                    <p>Daun Penh, Phnom Penh 1.6 km from centre Chaiya Palace Hotel features an outdoor swimming
+                        pool, fitness centre, a garden and terrace
+                        in
+                        Phnom Penh. This 4-star hotel offers a business centre and a concierge service.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Booking.com/10.jpg" alt="Preah Sihanouk Province">
+                    <h3>Won Majestic Hotel Cambodia</h3>
+                    <p>Sihanoukville 6.7 km from centre
+                        Beachfront
+                        Facing the beachfront, Billions Hotel offers 4-star accommodation in Sihanoukville and has an
+                        outdoor swimming pool, terrace and restaurant.</p>
+                </article>
+                <article class="category-card">
+                    <img src="../image/Booking.com/11.jpg" alt="Kampot Province">
+                    <h3>Kampot Hampton Villa</h3>
+                    <p>Kampot 1.6 km from centre
+                        Set in Kampot, 1.8 km from Kampot Pagoda, Kampot Hampton Villa offers accommodation with an
+                        outdoor swimming pool, free private parking, a garden and a terrace.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <p class="eyebrow">Gallery</p>
+                <h2>Cambodia Travel Photos</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="../image/Booking.com/12.jpg" alt="Cambodia photo 1">
+                <img src="../image/Booking.com/13.jpg" alt="Cambodia photo 2">
+                <img src="../image/Booking.com/14.jpg" alt="Cambodia photo 3">
+            </div>
+        </section>
+
+        <section class="related-section">
+            <div class="section-header">
+                <p class="eyebrow">More to explore</p>
+                <h2>Other destinations you might like</h2>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <img src="../image/Booking.com/17.png" alt="Kirisur Farm">
+                    <h3>Trip.com</h3>
+                    <p>Discover top transportation in Cambodia for easy travel. Getting around Cambodia by trains,
+                        airport pickups, private transfers, ferries, buses and more.</p>
+                    <a href="phnompenhepr.html"
+                        style="color: var(--primary); font-weight: 600; text-decoration: none; margin-top: 0.5rem; display: inline-block;">Learn
+                        more →</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col about">
+                <img src="../image/logo.jpg" alt="Free Promote Logo"
+                    style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;">
+                <p>We're travel enthusiasts who got tired of tourist traps and bad deals. Started this to help people
+                    actually enjoy their trips without the headache.</p>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../main.html#destinations">Destinations</a></li>
+                    <li><a href="../main.html#packages">Packages</a></li>
+                    <li><a href="../main.html#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact</h4>
+                <p style="margin-bottom: 0.5rem;">Phone: +855-15214262</p>
+                <p>Email: <a href="mailto:Freepromote@gmail.com"
+                        style="color: var(--primary); text-decoration: none;">Freepromote@gmail.com</a></p>
+            </div>
+
+            <div class="footer-col newsletter">
+                <h4>Stay Updated</h4>
+                <form class="footer-newsletter">
+                    <input type="email" placeholder="Your email">
+                    <button class="btn" type="submit">Join</button>
+                </form>
+                <div class="social">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sync authentication state with localStorage
+        window.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            const authLink = document.getElementById('authLink');
+            const authText = document.getElementById('authText');
+
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                authText.textContent = user.name;
+                authLink.href = '../profile.html';
+            }
+        });
+    </script>
+</body>
+
+</html>
