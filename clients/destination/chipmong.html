@@ -19,13 +19,8 @@
         <a class="brand" href="../main.html">
           <img src="../image/logo.jpg" alt="Free Promote Travel logo">
           <div>
-<<<<<<< HEAD
             <strong>Free Promote Travel</strong>
             <p>Explore destinations, malls, and services in Phnom Penh</p>
-=======
-            <strong>Free travel</strong>
-            <p>Retail, entertainment, and lifestyle in Phnom Penh</p>
->>>>>>> main
           </div>
         </a>
         <nav class="main-nav">
@@ -356,7 +351,7 @@
         
         filtered.forEach(d => {
           const a = document.createElement("a");
-          a.href = prefix + d.url;
+          a.href = (prefix === "../" ? "" : "destination/") + d.url;
           a.textContent = d.name;
           listContainer.appendChild(a);
         });

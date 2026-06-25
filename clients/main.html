@@ -36,40 +36,40 @@
                     onkeyup="filterDestinations(this.value, '')"
                   />
                 </form>
-                <div class="submenu-links">
+                <div class="submenu-links" id="navDestinationsList">
                   <a
-                    href="/clients/destination/kirisurfarm.html"
-                    target="_blank"
+                    href="destination/kirisurfarm.html"
+                    target="_self"
                     rel="noopener"
                     >Kirisur Farm</a
                   >
                   <a
-                    href="/clients/destination/honda.html"
-                    target="_blank"
+                    href="destination/honda.html"
+                    target="_self"
                     rel="noopener"
                     >Honda Powersports</a
                   >
                   <a
-                    href="/clients/destination/legendcam.html"
+                    href="destination/legendcam.html"
                     target="_self"
                     rel="noopener"
                     >Legend Cinema</a
                   >
                   <a
-                    href="/clients/destination/chipmong.html"
+                    href="destination/chipmong.html"
                     target="_self"
                     rel="noopener"
-                    >Free Travel</a
+                    >Chip Mong Experience</a
                   >
                   <a
-                    href="/clients/destination/phnompenhepr.html"
-                    target="_blank"
+                    href="destination/phnompenhepr.html"
+                    target="_self"
                     rel="noopener"
                     >Phnom Penh Experiences</a
                   >
                   <a
-                    href="/clients/destination/bookingcam.html"
-                    target="_blank"
+                    href="destination/bookingcam.html"
+                    target="_self"
                     rel="noopener"
                     >Booking Cambodia</a
                   >
@@ -79,7 +79,7 @@
           </div>
           <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
-          <a id="authLink" href="/clients/login.html" class="auth-link-item">
+          <a id="authLink" href="login.html" class="auth-link-item">
             <svg
               class="user-icon"
               viewBox="0 0 24 24"
@@ -113,7 +113,7 @@
             <a class="btn btn-outline" href="#destinations"
               >View Destinations</a
             >
-            <a class="btn btn-outline" href="booking.html">Request Booking</a>
+            <a class="btn btn-outline" href="contact.html#travel">Request Booking</a>
           </div>
           <form class="search-panel" onsubmit="handleHeroSearch(event)">
             <div class="search-field">
@@ -438,7 +438,7 @@
             <li><a href="#packages">Packages</a></li>
             <li><a href="#categories">Categories</a></li>
             <li><a href="#blog">Blog</a></li>
-            <li><a href="feedback.html">Leave a Review</a></li>
+            <li><a href="contact.html#community">Leave a Review</a></li>
           </ul>
         </div>
 
@@ -521,7 +521,7 @@
         
         filtered.forEach(d => {
           const a = document.createElement("a");
-          a.href = prefix + (prefix === "" ? "destination/" : "") + d.url;
+          a.href = (prefix === "../" ? "" : "destination/") + d.url;
           a.textContent = d.name;
           listContainer.appendChild(a);
         });

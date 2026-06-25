@@ -579,7 +579,6 @@
 
     <header class="site-header">
         <div class="topbar">
-<<<<<<< HEAD
             <span>Call us: +855-15214262</span>
             <nav class="top-links">
                 <a href="../main.html#destinations">Destinations</a>
@@ -587,32 +586,15 @@
             </nav>
         </div>
         <div class="nav-row">
-=======
-            <div
-                style="max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; padding: 0 24px;">
-                <span>Call us: +855-15214262</span>
-                <nav class="top-links">
-                    <a href="../main.html#destinations">Destinations</a>
-                    <a href="../main.html#contact">Contact</a>
-                </nav>
-            </div>
-        </div>
-        <div class="nav-row" style="max-width: 1200px; margin: 0 auto; width: 100%; padding: 14px 24px;">
->>>>>>> main
             <a class="brand" href="../main.html">
                 <img src="../image/logo.jpg" alt="Free Promote Travel logo">
                 <div>
                     <strong>Free Promote Travel</strong>
-<<<<<<< HEAD
                     <p>Explore destinations, malls, and services in Phnom Penh</p>
-=======
-                    <p>Destination detail</p>
->>>>>>> main
                 </div>
             </a>
             <nav class="main-nav">
                 <a href="../main.html">Home</a>
-<<<<<<< HEAD
                 <div class="nav-item dropdown">
                     <a href="../main.html#destinations">Destinations</a>
                     <div class="submenu-panel">
@@ -637,26 +619,19 @@
                     </div>
                 </div>
                 <a href="../main.html#blog">Blog</a>
-=======
-                <a href="../main.html#destinations">Destinations</a>
->>>>>>> main
                 <a href="../main.html#contact">Contact</a>
                 <a id="authLink" href="../login.html" class="auth-link-item">
                     <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-<<<<<<< HEAD
                     <span id="authText">Login / Register</span>
-=======
-                    <span id="authText">Login</span>
->>>>>>> main
                 </a>
             </nav>
         </div>
     </header>
 
-    <div class="page-container reveal">
+    <main class="page-container reveal">
 
         <div class="breadcrumb">
             <a href="../main.html">Home</a><span>/</span>
@@ -739,49 +714,7 @@
             </div>
         </section>
 
-    </div>
-
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-col about">
-                <img src="../image/logo.jpg" alt="Free Promote Logo"
-                    style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;">
-                <p>We're travel enthusiasts who got tired of tourist traps and bad deals. Started this to help people
-                    actually enjoy their trips without the headache.</p>
-            </div>
-
-            <div class="footer-col links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="../main.html#destinations">Destinations</a></li>
-                    <li><a href="../main.html#packages">Packages</a></li>
-                    <li><a href="../main.html#blog">Blog</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col contact">
-                <h4>Contact</h4>
-                <p style="margin-bottom: 0.5rem;">Phone: +855-15214262</p>
-                <p>Email: <a href="mailto:Freepromote@gmail.com"
-                        style="color: var(--primary); text-decoration: none;">Freepromote@gmail.com</a></p>
-            </div>
-
-            <div class="footer-col newsletter">
-                <h4>Stay Updated</h4>
-                <form class="footer-newsletter">
-                    <input type="email" placeholder="Your email">
-                    <button class="btn" type="submit">Join</button>
-                </form>
-                <div class="social">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
-        </div>
-    </footer>
+    </main>
 
     <script>
         // Cleaned Mockup Packages Storage - local image paths added
@@ -811,9 +744,25 @@
 
         function renderPackages() {
             const grid = document.getElementById('productGrid');
-            grid.innerHTML = '';
+            if (grid) {
+                grid.innerHTML = '';
+                getPackages().forEach(pkg => {
+                    const card = document.createElement('article');
+                    card.className = 'category-card';
 
-<<<<<<< HEAD
+                    // Render structure displays image and title cleanly
+                    card.innerHTML = `
+                        <img src="${pkg.img || ''}" alt="Tour Option Thumbnail">
+                        <div class="category-card-content">
+                            <h3>${pkg.title || ""}</h3>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+    </script>
+
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-col about">
@@ -875,11 +824,11 @@
       </div>
     </footer>
 
-    </main>
-
     <script>
-      // Sync authentication state with localStorage
+      // Sync authentication state with localStorage and render packages
       window.addEventListener("DOMContentLoaded", function () {
+        renderPackages();
+        
         const currentUser = localStorage.getItem("currentUser");
         const authLink = document.getElementById("authLink");
         const authText = document.getElementById("authText");
@@ -915,7 +864,7 @@
         
         filtered.forEach(d => {
           const a = document.createElement("a");
-          a.href = prefix + d.url;
+          a.href = (prefix === "../" ? "" : "destination/") + d.url;
           a.textContent = d.name;
           listContainer.appendChild(a);
         });
@@ -930,38 +879,7 @@
         }
       }
     </script>
-  </body>
-=======
-            getPackages().forEach(pkg => {
-                const card = document.createElement('article');
-                card.className = 'category-card';
-
-                // Render structure displays image and title cleanly
-                card.innerHTML = `
-                    <img src="${pkg.img || ''}" alt="Tour Option Thumbnail">
-                    <div class="category-card-content">
-                        <h3>${pkg.title || ""}</h3>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Initialize state engine triggers
-        window.addEventListener('DOMContentLoaded', function () {
-            renderPackages();
-            const currentUser = localStorage.getItem('currentUser');
-            const authLink = document.getElementById('authLink');
-            const authText = document.getElementById('authText');
-
-            if (currentUser) {
-                const user = JSON.parse(currentUser);
-                authText.textContent = user.name;
-                authLink.href = '../profile.html';
-            }
-        });
-    </script>
 </body>
->>>>>>> main
+</html>
 
 </html>

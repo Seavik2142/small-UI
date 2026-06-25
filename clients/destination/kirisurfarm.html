@@ -377,7 +377,7 @@
             
             filtered.forEach(d => {
                 const a = document.createElement("a");
-                a.href = prefix + d.url;
+                a.href = (prefix === "../" ? "" : "destination/") + d.url;
                 a.textContent = d.name;
                 listContainer.appendChild(a);
             });

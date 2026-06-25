@@ -581,36 +581,6 @@
         </div>
     </header>
 
-    <header class="site-header">
-        <div class="topbar">
-            <span>Call us: +855-15214262</span>
-            <nav class="top-links">
-                <a href="../main.html#destinations">Destinations</a>
-                <a href="../main.html#contact">Contact</a>
-            </nav>
-        </div>
-        <div class="nav-row">
-            <a class="brand" href="../main.html">
-                <img src="../image/logo.jpg" alt="Free Promote Travel logo">
-                <div>
-                    <strong>Free Promote Travel</strong>
-                    <p>Destination detail</p>
-                </div>
-            </a>
-            <nav class="main-nav">
-                <a href="../main.html">Home</a>
-                <a href="../main.html#destinations">Destinations</a>
-                <a href="../main.html#contact">Contact</a>
-                <a id="authLink" href="../login.html" class="auth-link-item">
-                    <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    <span id="authText">Login</span>
-                </a>
-            </nav>
-        </div>
-    </header>
 
     <main class="page-container reveal">
         <div class="breadcrumb">
@@ -755,7 +725,6 @@
     </main>
 
     <footer class="site-footer">
-<<<<<<< HEAD
       <div class="footer-inner">
         <div class="footer-col about">
           <img src="../image/logo.jpg" alt="Free Promote Logo" />
@@ -853,7 +822,7 @@
         
         filtered.forEach(d => {
           const a = document.createElement("a");
-          a.href = prefix + d.url;
+          a.href = (prefix === "../" ? "" : "destination/") + d.url;
           a.textContent = d.name;
           listContainer.appendChild(a);
         });
@@ -867,62 +836,6 @@
           event.target.reset();
         }
       }
-=======
-        <div class="footer-inner">
-            <div class="footer-col about">
-                <img src="../image/logo.jpg" alt="Free Promote Logo"
-                    style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;">
-                <p>We're travel enthusiasts who got tired of tourist traps and bad deals. Started this to help people
-                    actually enjoy their trips without the headache.</p>
-            </div>
-
-            <div class="footer-col links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="../main.html#destinations">Destinations</a></li>
-                    <li><a href="../main.html#packages">Packages</a></li>
-                    <li><a href="../main.html#blog">Blog</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col contact">
-                <h4>Contact</h4>
-                <p style="margin-bottom: 0.5rem;">Phone: +855-15214262</p>
-                <p>Email: <a href="mailto:Freepromote@gmail.com"
-                        style="color: var(--primary); text-decoration: none;">Freepromote@gmail.com</a></p>
-            </div>
-
-            <div class="footer-col newsletter">
-                <h4>Stay Updated</h4>
-                <form class="footer-newsletter">
-                    <input type="email" placeholder="Your email">
-                    <button class="btn" type="submit">Join</button>
-                </form>
-                <div class="social">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Sync authentication state with localStorage
-        window.addEventListener('DOMContentLoaded', function () {
-            const currentUser = localStorage.getItem('currentUser');
-            const authLink = document.getElementById('authLink');
-            const authText = document.getElementById('authText');
-
-            if (currentUser) {
-                const user = JSON.parse(currentUser);
-                authText.textContent = user.name;
-                authLink.href = '../profile.html';
-            }
-        });
->>>>>>> main
     </script>
 </body>
 
