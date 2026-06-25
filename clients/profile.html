@@ -240,8 +240,8 @@
                     <h2 id="displayName">User</h2>
                 </div>
                 <div class="profile-menu">
-                    <button class="profile-menu-item active" onclick="showSection('info')">📋 My Info</button>
-                    <button class="profile-menu-item" onclick="showSection('security')">🔒 Security</button>
+                    <button class="profile-menu-item active" onclick="showSection('info', event)">📋 My Info</button>
+                    <button class="profile-menu-item" onclick="showSection('security', event)">🔒 Security</button>
                     <button class="profile-menu-item" onclick="logout()">🚪 Logout</button>
                 </div>
             </div>
@@ -336,7 +336,7 @@
             document.getElementById('avatar').textContent = initials;
         }
 
-        function showSection(section) {
+        function showSection(section, event) {
             document.getElementById('infoSection').classList.add('hidden');
             document.getElementById('securitySection').classList.add('hidden');
 
@@ -348,7 +348,11 @@
                 document.getElementById('securitySection').classList.remove('hidden');
             }
 
-            event.target.classList.add('active');
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else if (event && event.target) {
+                event.target.classList.add('active');
+            }
         }
 
         function editInfo() {
