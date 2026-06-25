@@ -16,68 +16,40 @@
         </nav>
       </div>
       <div class="nav-row">
-        <div class="brand">
-          <img src="image/logo.jpg" alt="Chip Mong Logo" />
+        <a class="brand" href="main.html">
+          <img src="image/logo.jpg" alt="Free Promote Travel Logo" />
           <div>
-            <strong>Free Travel</strong>
-            <p>Explore Free Travel, malls, and services in Phnom Penh</p>
+            <strong>Free Promote Travel</strong>
+            <p>Explore destinations, malls, and services in Phnom Penh</p>
           </div>
-        </div>
+        </a>
         <nav class="main-nav">
           <div class="nav-item dropdown">
             <a href="#destinations">Destinations</a>
             <div class="submenu-panel">
               <div class="submenu-top">
-                <form class="submenu-search" action="#" method="get">
+                <form class="submenu-search" action="#" method="get" onsubmit="return false;">
                   <input
                     type="text"
-                    placeholder="Search tours, food, riding..."
+                    id="navSearchInput"
+                    placeholder="Search destinations..."
+                    onkeyup="filterDestinations(this.value, '')"
                   />
                 </form>
-                <div class="submenu-links">
-                  <a
-                    href="/clients/destination/kirisurfarm.html"
-                    target="_blank"
-                    rel="noopener"
-                    >Kirisur Farm</a
-                  >
-                  <a
-                    href="/clients/destination/honda.html"
-                    target="_blank"
-                    rel="noopener"
-                    >Honda Powersports</a
-                  >
-                  <a
-                    href="/clients/destination/legendcam.html"
-                    target="_self"
-                    rel="noopener"
-                    >Legend Cinema</a
-                  >
-                  <a
-                    href="/clients/destination/chipmong.html"
-                    target="_self"
-                    rel="noopener"
-                    >Free Travel</a
-                  >
-                  <a
-                    href="/clients/destination/phnompenhepr.html"
-                    target="_blank"
-                    rel="noopener"
-                    >Phnom Penh Experiences</a
-                  >
-                  <a
-                    href="/clients/destination/bookingcam.html"
-                    target="_blank"
-                    rel="noopener"
-                    >Booking Cambodia</a
-                  >
+                <div class="submenu-links" id="navDestinationsList">
+                  <a href="destination/kirisurfarm.html">Kirisur Farm</a>
+                  <a href="destination/honda.html">Honda Powersports</a>
+                  <a href="destination/legendcam.html">Legend Cinema</a>
+                  <a href="destination/chipmong.html">Chip Mong Experience</a>
+                  <a href="destination/phnompenhepr.html">Phnom Penh Experiences</a>
+                  <a href="destination/bookingcam.html">Booking Cambodia</a>
                 </div>
               </div>
             </div>
           </div>
           <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
-          <a id="authLink" href="/clients/login.html" class="auth-link-item">
+          <a id="authLink" href="login.html" class="auth-link-item">
             <svg
               class="user-icon"
               viewBox="0 0 24 24"
@@ -112,7 +84,7 @@
               >View Destinations</a
             >
           </div>
-          <div class="search-panel">
+          <form class="search-panel" onsubmit="handleHeroSearch(event)">
             <div class="search-field">
               <label>
                 <svg
@@ -129,7 +101,7 @@
                 </svg>
                 Destination
               </label>
-              <input type="text" placeholder="Enter a city or country" />
+              <input type="text" id="heroSearchInput" placeholder="Enter a city or country" />
             </div>
             <div class="search-field">
               <label>
@@ -176,7 +148,7 @@
                 <option>Group</option>
               </select>
             </div>
-            <button class="btn btn-search">
+            <button class="btn btn-search" type="submit">
               <svg
                 class="btn-icon"
                 viewBox="0 0 24 24"
@@ -189,7 +161,7 @@
               </svg>
               Search Trips
             </button>
-          </div>
+          </form>
         </div>
         <div class="hero-media">
           <div class="hero-card hero-card-top">
@@ -453,12 +425,13 @@
         <div class="footer-col newsletter">
           <h4>Stay Updated</h4>
           <p>Get travel deals and updates delivered to your inbox.</p>
-          <form class="footer-newsletter" action="#" method="post">
+          <form class="footer-newsletter" onsubmit="handleNewsletterSubmit(event)">
             <input
               type="email"
               name="email"
               placeholder="Your email"
               aria-label="Your email"
+              required
             />
             <button class="btn" type="submit">Subscribe</button>
           </form>
@@ -493,6 +466,88 @@
           authLink.href = "profile.html";
         }
       });
+
+      function filterDestinations(query, prefix) {
+        const destinations = [
+          { name: "Kirisur Farm", url: "kirisurfarm.html" },
+          { name: "Honda Powersports", url: "honda.html" },
+          { name: "Legend Cinema", url: "legendcam.html" },
+          { name: "Chip Mong Experience", url: "chipmong.html" },
+          { name: "Phnom Penh Experiences", url: "phnompenhepr.html" },
+          { name: "Booking Cambodia", url: "bookingcam.html" }
+        ];
+        
+        const filtered = destinations.filter(d => 
+          d.name.toLowerCase().includes(query.toLowerCase())
+        );
+        
+        const listContainer = document.getElementById("navDestinationsList");
+        listContainer.innerHTML = "";
+        
+        if (filtered.length === 0) {
+          listContainer.innerHTML = '<div style="padding: 10px; color: #5f7385; font-size: 0.95rem;">No results found</div>';
+          return;
+        }
+        
+        filtered.forEach(d => {
+          const a = document.createElement("a");
+          a.href = prefix + (prefix === "" ? "destination/" : "") + d.url;
+          a.textContent = d.name;
+          listContainer.appendChild(a);
+        });
+      }
+
+      function handleNewsletterSubmit(event) {
+        event.preventDefault();
+        const emailInput = event.target.querySelector('input[type="email"]');
+        if (emailInput && emailInput.value.trim()) {
+          alert("Thank you! You have subscribed to our newsletter with: " + emailInput.value.trim());
+          event.target.reset();
+        }
+      }
+
+      function handleHeroSearch(event) {
+        event.preventDefault();
+        const query = document.getElementById("heroSearchInput").value.trim().toLowerCase();
+        
+        if (!query) {
+          const destSection = document.getElementById("destinations");
+          if (destSection) {
+            destSection.scrollIntoView({ behavior: "smooth" });
+          }
+          return;
+        }
+
+        const destinations = [
+          { name: "kirisur farm", url: "destination/kirisurfarm.html" },
+          { name: "kirisur", url: "destination/kirisurfarm.html" },
+          { name: "farm", url: "destination/kirisurfarm.html" },
+          { name: "honda powersports", url: "destination/honda.html" },
+          { name: "honda", url: "destination/honda.html" },
+          { name: "legend cinema", url: "destination/legendcam.html" },
+          { name: "legend", url: "destination/legendcam.html" },
+          { name: "cinema", url: "destination/legendcam.html" },
+          { name: "chip mong", url: "destination/chipmong.html" },
+          { name: "chip mong experience", url: "destination/chipmong.html" },
+          { name: "free travel", url: "destination/chipmong.html" },
+          { name: "phnom penh experiences", url: "destination/phnompenhepr.html" },
+          { name: "phnom penh", url: "destination/phnompenhepr.html" },
+          { name: "booking cambodia", url: "destination/bookingcam.html" },
+          { name: "booking", url: "destination/bookingcam.html" },
+          { name: "cambodia", url: "destination/bookingcam.html" }
+        ];
+
+        const match = destinations.find(d => query.includes(d.name) || d.name.includes(query));
+        if (match) {
+          window.location.href = match.url;
+        } else {
+          alert("No direct destination page found for '" + query + "'. Showing all destinations.");
+          const destSection = document.getElementById("destinations");
+          if (destSection) {
+            destSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
     </script>
   </body>
 </html>

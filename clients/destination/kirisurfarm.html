@@ -145,19 +145,42 @@
                 <img src="../image/logo.jpg" alt="Free Promote Travel logo">
                 <div>
                     <strong>Free Promote Travel</strong>
-                    <p>Destination detail</p>
+                    <p>Explore destinations, malls, and services in Phnom Penh</p>
                 </div>
             </a>
             <nav class="main-nav">
                 <a href="../main.html">Home</a>
-                <a href="../main.html#destinations">Destinations</a>
+                <div class="nav-item dropdown">
+                    <a href="../main.html#destinations">Destinations</a>
+                    <div class="submenu-panel">
+                        <div class="submenu-top">
+                            <form class="submenu-search" action="#" method="get" onsubmit="return false;">
+                                <input
+                                    type="text"
+                                    id="navSearchInput"
+                                    placeholder="Search destinations..."
+                                    onkeyup="filterDestinations(this.value, '../')"
+                                />
+                            </form>
+                            <div class="submenu-links" id="navDestinationsList">
+                                <a href="kirisurfarm.html">Kirisur Farm</a>
+                                <a href="honda.html">Honda Powersports</a>
+                                <a href="legendcam.html">Legend Cinema</a>
+                                <a href="chipmong.html">Chip Mong Experience</a>
+                                <a href="phnompenhepr.html">Phnom Penh Experiences</a>
+                                <a href="bookingcam.html">Booking Cambodia</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="../main.html#blog">Blog</a>
                 <a href="../main.html#contact">Contact</a>
                 <a id="authLink" href="../login.html" class="auth-link-item">
                     <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                    <span id="authText">Login</span>
+                    <span id="authText">Login / Register</span>
                 </a>
             </nav>
         </div>
@@ -261,42 +284,64 @@
     </main>
 
     <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-col about">
-                <img src="../image/logo.jpg" alt="Free Promote Logo">
-                <p>We're travel enthusiasts who got tired of tourist traps and bad deals. Started this to help people actually enjoy their trips without the headache.</p>
-            </div>
-
-            <div class="footer-col links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="../main.html#destinations">Destinations</a></li>
-                    <li><a href="../main.html#packages">Packages</a></li>
-                    <li><a href="../main.html#blog">Blog</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col contact">
-                <h4>Contact</h4>
-                <p>Phone: +855-15214262</p>
-                <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
-            </div>
-
-            <div class="footer-col newsletter">
-                <h4>Stay Updated</h4>
-                <form class="footer-newsletter">
-                    <input type="email" placeholder="Your email">
-                    <button class="btn" type="submit">Join</button>
-                </form>
-                <div class="social">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                </div>
-            </div>
+      <div class="footer-inner">
+        <div class="footer-col about">
+          <img src="../image/logo.jpg" alt="Free Promote Logo" />
+          <p>
+            We're travel enthusiasts who got tired of tourist traps and bad
+            deals. Started this to help people actually enjoy their trips
+            without the headache.
+          </p>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+
+        <div class="footer-col links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="../main.html#destinations">Destinations</a></li>
+            <li><a href="../main.html#packages">Packages</a></li>
+            <li><a href="../main.html#categories">Categories</a></li>
+            <li><a href="../main.html#blog">Blog</a></li>
+          </ul>
         </div>
+
+        <div class="footer-col contact">
+          <h4>Contact</h4>
+          <p>Phone: +855-15214262</p>
+          <p>
+            Email:
+            <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a>
+          </p>
+          <p>Address: Phnom Penh / Online</p>
+        </div>
+
+        <div class="footer-col newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get travel deals and updates delivered to your inbox.</p>
+          <form class="footer-newsletter" onsubmit="handleNewsletterSubmit(event)">
+            <input
+              type="email"
+              placeholder="Your email"
+              aria-label="Your email"
+              required
+            />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+          <div class="social">
+            <a href="https://facebook.com" target="_blank" rel="noopener"
+              >Facebook</a
+            >
+            <a href="https://instagram.com" target="_blank" rel="noopener"
+              >Instagram</a
+            >
+            <a href="https://twitter.com" target="_blank" rel="noopener"
+              >Twitter</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+      </div>
     </footer>
 
     <script>
@@ -312,6 +357,45 @@
                 authLink.href = '../profile.html';
             }
         });
+
+        function filterDestinations(query, prefix) {
+            const destinations = [
+                { name: "Kirisur Farm", url: "kirisurfarm.html" },
+                { name: "Honda Powersports", url: "honda.html" },
+                { name: "Legend Cinema", url: "legendcam.html" },
+                { name: "Chip Mong Experience", url: "chipmong.html" },
+                { name: "Phnom Penh Experiences", url: "phnompenhepr.html" },
+                { name: "Booking Cambodia", url: "bookingcam.html" }
+            ];
+            
+            const filtered = destinations.filter(d => 
+                d.name.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            const listContainer = document.getElementById("navDestinationsList");
+            listContainer.innerHTML = "";
+            
+            if (filtered.length === 0) {
+                listContainer.innerHTML = '<div style="padding: 10px; color: #5f7385; font-size: 0.95rem;">No results found</div>';
+                return;
+            }
+            
+            filtered.forEach(d => {
+                const a = document.createElement("a");
+                a.href = prefix + d.url;
+                a.textContent = d.name;
+                listContainer.appendChild(a);
+            });
+        }
+
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+            const emailInput = event.target.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value.trim()) {
+                alert("Thank you! You have subscribed to our newsletter with: " + emailInput.value.trim());
+                event.target.reset();
+            }
+        }
     </script>
 </body>
 </html>

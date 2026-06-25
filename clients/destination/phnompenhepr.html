@@ -820,29 +820,356 @@
         .breadcrumb-footer a:hover {
             text-decoration: underline;
         }
+
+        /* Unified Navigation Header Styles */
+        .site-header {
+            --text: #102a43;
+            --muted: #5f7385;
+            --primary: #1867ff;
+            --border: #d9e2ec;
+            
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(16, 42, 67, 0.08);
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            width: 100%;
+        }
+
+        .site-header a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .site-header .topbar,
+        .site-header .nav-row {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            box-sizing: border-box;
+        }
+
+        .site-header .topbar {
+            font-size: 0.9rem;
+            color: var(--muted);
+            border-bottom: 1px solid rgba(16, 42, 67, 0.08);
+        }
+
+        .site-header .top-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .site-header .top-links a {
+            color: var(--muted);
+        }
+
+        .site-header .auth-link-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text) !important;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .site-header .auth-link-item:hover {
+            color: var(--primary) !important;
+        }
+
+        .site-header .user-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .site-header .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .site-header .brand img {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: none;
+        }
+
+        .site-header .brand strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .site-header .brand p {
+            margin: 0.1rem 0 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .site-header .main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .site-header .nav-item {
+            position: relative;
+        }
+
+        .site-header .main-nav a {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .site-header .main-nav a:hover {
+            color: var(--primary);
+        }
+
+        .site-header .main-nav .auth-link-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--text) !important;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .site-header .main-nav .auth-link-item:hover {
+            color: var(--primary) !important;
+            background: rgba(24, 103, 255, 0.1);
+        }
+
+        .site-header .submenu-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 420px;
+            background: #ffffff;
+            border: 1px solid rgba(16, 42, 67, 0.06);
+            box-shadow: 0 8px 24px rgba(16, 42, 67, 0.04);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 40;
+            text-align: left;
+        }
+
+        .site-header .nav-item:hover .submenu-panel,
+        .site-header .nav-item:focus-within .submenu-panel {
+            display: block;
+        }
+
+        .site-header .submenu-top {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .site-header .submenu-search input {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            outline: none;
+            font-size: 0.95rem;
+            background: #ffffff;
+            color: var(--text);
+        }
+
+        .site-header .submenu-links {
+            margin-top: 0.6rem;
+            display: block;
+            padding: 6px 8px;
+        }
+
+        .site-header .submenu-links a {
+            display: block;
+            padding: 0.6rem 0.4rem;
+            color: var(--text);
+            border-bottom: 1px solid rgba(16,42,67,0.04);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .site-header .submenu-links a:hover {
+            color: var(--primary);
+        }
+
+        .site-header .submenu-links a:last-child {
+            border-bottom: none;
+        }
+
+        }
+
+        /* Unified Footer Styles */
+        .site-footer {
+            padding: 2rem 1.5rem 3rem;
+            color: #5f7385;
+            background: #f5f7fb;
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .site-footer a {
+            text-decoration: none;
+            color: #5f7385;
+        }
+
+        .site-footer .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto 1.25rem;
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            box-sizing: border-box;
+        }
+
+        .site-footer .footer-col img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+        }
+
+        .site-footer .footer-col h4 {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+            color: #102a43;
+            font-weight: 700;
+        }
+
+        .site-footer .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .site-footer .footer-col ul li {
+            margin: 0.4rem 0;
+        }
+
+        .site-footer .footer-newsletter {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .site-footer .footer-newsletter input[type="email"] {
+            flex: 1;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid rgba(16,42,67,0.08);
+            border-radius: 8px;
+            outline: none;
+            background: #ffffff;
+            color: #102a43;
+        }
+
+        .site-footer .footer-newsletter .btn {
+            padding: 0.55rem 0.9rem;
+            border-radius: 8px;
+            background: #1867ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .site-footer .social {
+            margin-top: 0.75rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .site-footer .social a {
+            color: #5f7385;
+            font-weight: 600;
+        }
+
+        .site-footer .footer-bottom {
+            border-top: 1px solid rgba(16,42,67,0.06);
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #5f7385;
+        }
+
+        @media (max-width: 1024px) {
+            .site-footer .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <header class="header-navbar">
-        <div class="nav-left-group">
-            <a href="#" class="brand-logo">Trip<span>.com</span></a>
-            <ul class="nav-menu-links">
-                <li><a href="#">Hotels & Homes</a></li>
-                <li><a href="#">Flights</a></li>
-                <li><a href="#">Car services</a></li>
-                <li><a href="#" class="active">Attractions & Tours</a></li>
-                <li><a href="#"><i class="fa-solid fa-ellipsis"></i></a></li>
-            </ul>
+    <header class="site-header">
+        <div class="topbar">
+            <span>Call us: +855-15214262</span>
+            <nav class="top-links">
+                <a href="../main.html#destinations">Destinations</a>
+                <a href="../main.html#contact">Contact</a>
+            </nav>
         </div>
-
-        <div class="nav-right-group">
-            <a href="#" class="nav-utility-item"><i class="fa-solid fa-mobile-screen-button"></i> App</a>
-            <div class="nav-utility-item">🇦🇪 AED</div>
-            <div class="nav-utility-item">Customer support</div>
-            <div class="nav-utility-item">Find bookings</div>
-            <button class="btn-auth-register">Sign in/register</button>
+        <div class="nav-row">
+            <a class="brand" href="../main.html">
+                <img src="../image/logo.jpg" alt="Free Promote Travel logo">
+                <div>
+                    <strong>Free Promote Travel</strong>
+                    <p>Explore destinations, malls, and services in Phnom Penh</p>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <a href="../main.html">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="../main.html#destinations">Destinations</a>
+                    <div class="submenu-panel">
+                        <div class="submenu-top">
+                            <form class="submenu-search" action="#" method="get" onsubmit="return false;">
+                                <input
+                                    type="text"
+                                    id="navSearchInput"
+                                    placeholder="Search destinations..."
+                                    onkeyup="filterDestinations(this.value, '../')"
+                                />
+                            </form>
+                            <div class="submenu-links" id="navDestinationsList">
+                                <a href="kirisurfarm.html">Kirisur Farm</a>
+                                <a href="honda.html">Honda Powersports</a>
+                                <a href="legendcam.html">Legend Cinema</a>
+                                <a href="chipmong.html">Chip Mong Experience</a>
+                                <a href="phnompenhepr.html">Phnom Penh Experiences</a>
+                                <a href="bookingcam.html">Booking Cambodia</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="../main.html#blog">Blog</a>
+                <a href="../main.html#contact">Contact</a>
+                <a id="authLink" href="../login.html" class="auth-link-item">
+                    <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span id="authText">Login / Register</span>
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -1170,79 +1497,122 @@
             </div>
         </div>
 
-        <footer class="global-footer-container">
-            <div class="footer-columns-grid">
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col about">
+          <img src="../image/logo.jpg" alt="Free Promote Logo" />
+          <p>
+            We're travel enthusiasts who got tired of tourist traps and bad
+            deals. Started this to help people actually enjoy their trips
+            without the headache.
+          </p>
+        </div>
 
-                <div class="footer-column">
-                    <h3>Contact us</h3>
-                    <ul>
-                        <li><a href="#">Customer support</a></li>
-                        <li><a href="#">Service Guarantee</a></li>
-                        <li><a href="#">More service info</a></li>
-                    </ul>
-                    <div class="social-icons-row">
-                        <a href="#" class="social-circle-link"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="social-circle-link"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="social-circle-link"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
+        <div class="footer-col links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="../main.html#destinations">Destinations</a></li>
+            <li><a href="../main.html#packages">Packages</a></li>
+            <li><a href="../main.html#categories">Categories</a></li>
+            <li><a href="../main.html#blog">Blog</a></li>
+          </ul>
+        </div>
 
-                <div class="footer-column">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="#">About Trip.com</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Statement</a></li>
-                        <li><a href="#">Accessibility Statement</a></li>
-                        <li><a href="#">About Trip.com Group</a></li>
-                    </ul>
-                </div>
+        <div class="footer-col contact">
+          <h4>Contact</h4>
+          <p>Phone: +855-15214262</p>
+          <p>
+            Email:
+            <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a>
+          </p>
+          <p>Address: Phnom Penh / Online</p>
+        </div>
 
-                <div class="footer-column">
-                    <h3>Other services</h3>
-                    <ul>
-                        <li><a href="#">Investor relations</a></li>
-                        <li><a href="#">Trip.com Rewards</a></li>
-                        <li><a href="#">Affiliate program</a></li>
-                        <li><a href="#">List your property</a></li>
-                        <li><a href="#">Security</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <div class="utility-sub-title">Payment methods</div>
-                    <div class="badges-inline-flex">
-                        <div class="payment-badge-box" style="color: #0073b7;">Union</div>
-                        <div class="payment-badge-box" style="color: #eb001b;">MC</div>
-                        <div class="payment-badge-box" style="color: #1a1f71;">Visa</div>
-                        <div class="payment-badge-box" style="color: #007cc4;">Amex</div>
-                        <div class="payment-badge-box" style="color: #333333;">JCB</div>
-                        <div class="payment-badge-box" style="color: #003366;">Din</div>
-                        <div class="payment-badge-box" style="color: #f7931a;">Disc</div>
-                        <div class="payment-badge-box" style="color: #000000;"><i class="fa-brands fa-apple-pay"
-                                style="font-size: 20px;"></i></div>
-                        <div class="payment-badge-box" style="color: #00a0e9; font-size: 9px;">Alipay</div>
-                        <div class="payment-badge-box" style="color: #6042a6;">Gift</div>
-                    </div>
-
-                    <div class="utility-sub-title">Our partners</div>
-                    <div class="partners-logos-row">
-                        <span class="partner-logo-txt" style="color: #4285F4;">G<span
-                                style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span
-                                style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span
-                                style="color:#EA4335;">e</span></span>
-                        <span class="partner-logo-txt" style="color: #00af87;"><i class="fa-solid fa-face-smile"></i>
-                            tripadvisor</span>
-                    </div>
-                </div>
-
-            </div>
-        </footer>
+        <div class="footer-col newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get travel deals and updates delivered to your inbox.</p>
+          <form class="footer-newsletter" onsubmit="handleNewsletterSubmit(event)">
+            <input
+              type="email"
+              placeholder="Your email"
+              aria-label="Your email"
+              required
+            />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+          <div class="social">
+            <a href="https://facebook.com" target="_blank" rel="noopener"
+              >Facebook</a
+            >
+            <a href="https://instagram.com" target="_blank" rel="noopener"
+              >Instagram</a
+            >
+            <a href="https://twitter.com" target="_blank" rel="noopener"
+              >Twitter</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+      </div>
+    </footer>
 
     </main>
 
-</body>
+    <script>
+      // Sync authentication state with localStorage
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        const authLink = document.getElementById("authLink");
+        const authText = document.getElementById("authText");
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          authText.textContent = user.name;
+          authLink.href = "../profile.html";
+        }
+      });
+
+      function filterDestinations(query, prefix) {
+        const destinations = [
+          { name: "Kirisur Farm", url: "kirisurfarm.html" },
+          { name: "Honda Powersports", url: "honda.html" },
+          { name: "Legend Cinema", url: "legendcam.html" },
+          { name: "Chip Mong Experience", url: "chipmong.html" },
+          { name: "Phnom Penh Experiences", url: "phnompenhepr.html" },
+          { name: "Booking Cambodia", url: "bookingcam.html" }
+        ];
+        
+        const filtered = destinations.filter(d => 
+          d.name.toLowerCase().includes(query.toLowerCase())
+        );
+        
+        const listContainer = document.getElementById("navDestinationsList");
+        listContainer.innerHTML = "";
+        
+        if (filtered.length === 0) {
+          listContainer.innerHTML = '<div style="padding: 10px; color: #5f7385; font-size: 0.95rem;">No results found</div>';
+          return;
+        }
+        
+        filtered.forEach(d => {
+          const a = document.createElement("a");
+          a.href = prefix + d.url;
+          a.textContent = d.name;
+          listContainer.appendChild(a);
+        });
+      }
+
+      function handleNewsletterSubmit(event) {
+        event.preventDefault();
+        const emailInput = event.target.querySelector('input[type="email"]');
+        if (emailInput && emailInput.value.trim()) {
+          alert("Thank you! You have subscribed to our newsletter with: " + emailInput.value.trim());
+          event.target.reset();
+        }
+      }
+    </script>
+  </body>
 
 </html>
