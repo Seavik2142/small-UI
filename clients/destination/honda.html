@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +13,32 @@
             font-size: 0.9rem;
             color: var(--muted);
         }
+
         .breadcrumb a {
             color: var(--primary);
             text-decoration: none;
         }
-        .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            opacity: 0.5;
+        }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .reveal { animation: fadeInUp 0.8s ease forwards; }
+
+        .reveal {
+            animation: fadeInUp 0.8s ease forwards;
+        }
 
         .destination-hero {
             display: grid;
@@ -94,7 +110,7 @@
 
         .gallery-grid img:hover {
             transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .related-section {
@@ -119,6 +135,7 @@
         }
 
         @media (max-width: 800px) {
+
             .destination-hero,
             .info-strip,
             .gallery-grid {
@@ -131,6 +148,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="site-header">
         <div class="topbar">
@@ -202,7 +220,8 @@
                     and performance vehicles built for adventure.
                 </p>
                 <div class="hero-actions">
-                    <a class="btn btn-primary" href="https://powersports.honda.com/" target="_blank" rel="noopener">Visit Website</a>
+                    <a class="btn btn-primary" href="https://powersports.honda.com/" target="_blank"
+                        rel="noopener">Visit Website</a>
                     <a class="btn btn-outline" href="../main.html#destinations">Back to Destinations</a>
                 </div>
             </div>
@@ -233,7 +252,8 @@
             </div>
             <div class="category-grid">
                 <article class="category-card">
-                    <img src="../image/Honda/2025-cbr1000rr-r-fireblade-sp-grand_prix_red-1505x923.avif" alt="Honda sport motorcycle">
+                    <img src="../image/Honda/2025-cbr1000rr-r-fireblade-sp-grand_prix_red-1505x923.avif"
+                        alt="Honda sport motorcycle">
                     <h3>Sport Motorcycles</h3>
                     <p>Honda is well known for strong, stylish motorcycles made for road performance.</p>
                 </article>
@@ -284,6 +304,7 @@
     </main>
 
     <footer class="site-footer">
+<<<<<<< HEAD
       <div class="footer-inner">
         <div class="footer-col about">
           <img src="../image/logo.jpg" alt="Free Promote Logo" />
@@ -292,6 +313,41 @@
             deals. Started this to help people actually enjoy their trips
             without the headache.
           </p>
+=======
+        <div class="footer-inner">
+            <div class="footer-col about">
+                <img src="../image/logo.jpg" alt="Free Promote Logo">
+                <p>We're travel enthusiasts who got tired of tourist traps and bad deals. Started this to help people
+                    actually enjoy their trips without the headache.</p>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../main.html#destinations">Destinations</a></li>
+                    <li><a href="../main.html#packages">Packages</a></li>
+                    <li><a href="../main.html#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact</h4>
+                <p>Phone: +855-15214262</p>
+                <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
+            </div>
+
+            <div class="footer-col newsletter">
+                <h4>Stay Updated</h4>
+                <form class="footer-newsletter">
+                    <input type="email" placeholder="Your email">
+                    <button class="btn" type="submit">Join</button>
+                </form>
+                <div class="social">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+>>>>>>> main
         </div>
 
         <div class="footer-col links">
@@ -346,7 +402,7 @@
 
     <script>
         // Sync authentication state with localStorage
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('DOMContentLoaded', function () {
             const currentUser = localStorage.getItem('currentUser');
             const authLink = document.getElementById('authLink');
             const authText = document.getElementById('authText');
@@ -398,4 +454,5 @@
         }
     </script>
 </body>
+
 </html>
