@@ -20,6 +20,7 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
+    overflow-x: hidden;
 }
 
 img {
@@ -763,10 +764,13 @@ main {
     display: flex;
     width: max-content;
     animation: ticker-slide 30s linear infinite;
+    flex-wrap: nowrap;
 }
 
 .scrolling-ticker-list {
     display: flex;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
     gap: 3rem;
     padding-right: 3rem;
     align-items: center;
