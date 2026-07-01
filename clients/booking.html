@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a Trip - Free Travel</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .booking-container {
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+      .booking-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 3rem;
+        box-shadow: 0 10px 40px rgba(16, 42, 67, 0.05);
+      }
+      .booking-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+      .booking-header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        color: var(--text);
+      }
+      .booking-header p {
+        color: var(--muted);
+        margin-top: 0.5rem;
+      }
+      .form-section {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .form-section h3 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .form-group.full-width {
+        grid-column: span 2;
+      }
+      .form-group label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        background: #fff;
+        transition: all 0.2s ease;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(24, 103, 255, 0.15);
+      }
+      .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .booking-summary {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+      }
+      .summary-row:last-child {
+        margin-bottom: 0;
+        padding-top: 0.8rem;
+        border-top: 1px solid var(--border);
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+      .success-overlay {
+        display: none;
+        text-align: center;
+        padding: 3rem 1.5rem;
+      }
+      .success-icon {
+        width: 80px;
+        height: 80px;
+        background: #e7f7ed;
+        color: #2ecc71;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .btn-booking {
+        width: 100%;
+        padding: 1.1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      @media (max-width: 600px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full-width {
+          grid-column: span 1;
+        }
+        .booking-card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <span>Call us: +855-15214262</span>
+        <nav class="top-links">
+          <a href="about.html">About Us</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="nav-row">
+        <div class="brand">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%;" />
+          <div>
+            <strong>Free Travel</strong>
+            <p>Explore Free Travel, malls, and services in Phnom Penh</p>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="main.html">Home</a>
+          <div class="nav-item dropdown">
+            <a href="destinations.html">Destinations</a>
+            <div class="submenu-panel">
+              <div class="submenu-top">
+                <form class="submenu-search" action="#" method="get">
+                  <input type="text" placeholder="Search tours, food, riding..." />
+                </form>
+                <div class="submenu-links">
+                  <a href="destination/kirisurfarm.html">Kirisur Farm</a>
+                  <a href="destination/honda.html">Honda Powersports</a>
+                  <a href="destination/legendcam.html">Legend Cinema</a>
+                  <a href="destination/chipmong.html">Free Travel</a>
+                  <a href="destination/phnompenhepr.html">Phnom Penh Experiences</a>
+                  <a href="destination/bookingcam.html">Booking Cambodia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="blog.html">Blog</a>
+          <a href="booking.html" class="active">Book a Trip</a>
+          <a href="contact.html">Contact</a>
+          <a id="authLink" href="login.html" class="auth-link-item">
+            <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span id="authText">Login / Register</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="booking-container">
+      <div class="booking-card" id="bookingCard">
+        <div class="booking-header">
+          <h1>Request Travel Booking</h1>
+          <p>Complete the form below and our consultants will reserve your trip.</p>
+        </div>
+
+        
+        <form id="bookingForm">
+          <div class="form-section">
+            <h3>👤 Personal Details</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" required placeholder="+855-..." />
+              </div>
+              <div class="form-group">
+                <label for="passport">Passport / ID Number</label>
+                <input type="text" id="passport" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>✈️ Trip Plan</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="destination">Select Destination *</label>
+                <select id="destination" required>
+                  <option value="" disabled selected>Choose destination...</option>
+                  <option value="kirisurfarm" data-price="49">Kirisur Farm ($49/guest)</option>
+                  <option value="honda" data-price="99">Honda Powersports ($99/guest)</option>
+                  <option value="legendcam" data-price="15">Legend Cinema Experience ($15/guest)</option>
+                  <option value="chipmong" data-price="29">Chip Mong Shopping Day ($29/guest)</option>
+                  <option value="phnompenhepr" data-price="79">Phnom Penh Experiences ($79/guest)</option>
+                  <option value="bookingcam" data-price="119">Siem Reap Temple Tour ($119/guest)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="travelDate">Preferred Travel Date *</label>
+                <input type="date" id="travelDate" required />
+              </div>
+              <div class="form-group">
+                <label for="guests">Number of Guests *</label>
+                <input type="number" id="guests" min="1" max="10" value="2" required />
+              </div>
+              <div class="form-group">
+                <label for="travelClass">Service Class</label>
+                <select id="travelClass">
+                  <option value="Standard" data-markup="0">Standard</option>
+                  <option value="Premium" data-markup="30">Premium (+$30/guest)</option>
+                  <option value="Luxury" data-markup="75">Luxury (+$75/guest)</option>
+                </select>
+              </div>
+              <div class="form-group full-width">
+                <label for="specialRequests">Special Requests / Dietary Restrictions</label>
+                <textarea id="specialRequests" placeholder="Tell us if you need hotel upgrades, airport transfers, etc."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-summary">
+            <div class="summary-row">
+              <span>Base Price (per guest)</span>
+              <span id="basePriceDisplay">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Class Upgrade (per guest)</span>
+              <span id="classUpgradeDisplay">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Guests</span>
+              <span id="guestsCountDisplay">2</span>
+            </div>
+            <div class="summary-row">
+              <span>Total Estimated Price</span>
+              <span id="totalPriceDisplay">$0.00</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-booking">Submit Booking Request</button>
+        </form>
+      </div>
+
+      <div class="booking-card success-overlay" id="successOverlay">
+        <div class="success-icon">✓</div>
+        <h2>Booking Request Received!</h2>
+        <p>Your booking reference code is <strong id="refCode" style="color: var(--primary);"></strong>.</p>
+        <p>A travel consultant will contact you via email shortly to confirm your details and invoice.</p>
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+          <a href="profile.html" class="btn btn-primary">Go to Profile</a>
+          <a href="main.html" class="btn btn-outline">Back to Home</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col about">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;" />
+          <p>
+            We're travel enthusiasts who got tired of tourist traps and bad
+            deals. Started this to help people actually enjoy their trips
+            without the headache.
+          </p>
+        </div>
+
+        <div class="footer-col links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="feedback.html">Leave a Review</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col contact">
+          <h4>Contact</h4>
+          <p>Phone: +855-15214262</p>
+          <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
+          <p>Address: Phnom Penh / Online</p>
+        </div>
+
+        <div class="footer-col newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get travel deals and updates delivered to your inbox.</p>
+          <form class="footer-newsletter" action="#" method="post">
+            <input type="email" name="email" placeholder="Your email" required />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Sync auth state
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        const authLink = document.getElementById("authLink");
+        const authText = document.getElementById("authText");
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          authText.textContent = user.name;
+          authLink.href = "profile.html";
+          
+          // Pre-fill profile details
+          document.getElementById('fullName').value = user.name;
+          document.getElementById('email').value = user.email;
+        }
+
+        // Price calculator
+        const destinationSelect = document.getElementById('destination');
+        const classSelect = document.getElementById('travelClass');
+        const guestsInput = document.getElementById('guests');
+
+        function updatePrice() {
+          const selectedOption = destinationSelect.options[destinationSelect.selectedIndex];
+          const classOption = classSelect.options[classSelect.selectedIndex];
+          
+          if (!selectedOption || selectedOption.value === "") {
+            document.getElementById('basePriceDisplay').textContent = "$0.00";
+            document.getElementById('classUpgradeDisplay').textContent = "$0.00";
+            document.getElementById('totalPriceDisplay').textContent = "$0.00";
+            return;
+          }
+
+          const basePrice = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+          const markup = parseFloat(classOption.getAttribute('data-markup')) || 0;
+          const guests = parseInt(guestsInput.value) || 1;
+
+          document.getElementById('basePriceDisplay').textContent = `$${basePrice.toFixed(2)}`;
+          document.getElementById('classUpgradeDisplay').textContent = `$${markup.toFixed(2)}`;
+          document.getElementById('guestsCountDisplay').textContent = guests;
+
+          const total = (basePrice + markup) * guests;
+          document.getElementById('totalPriceDisplay').textContent = `$${total.toFixed(2)}`;
+        }
+
+        destinationSelect.addEventListener('change', updatePrice);
+        classSelect.addEventListener('change', updatePrice);
+        guestsInput.addEventListener('input', updatePrice);
+
+        // Handle form submit
+        const bookingForm = document.getElementById('bookingForm');
+        bookingForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const name = document.getElementById('fullName').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const phone = document.getElementById('phone').value.trim();
+          const passport = document.getElementById('passport').value.trim();
+          const destination = destinationSelect.value;
+          const destinationText = destinationSelect.options[destinationSelect.selectedIndex].text.split(' ($')[0];
+          const date = document.getElementById('travelDate').value;
+          const guests = guestsInput.value;
+          const serviceClass = classSelect.value;
+          const specialRequests = document.getElementById('specialRequests').value.trim();
+          
+          const ref = 'FT-BK' + Math.floor(100000 + Math.random() * 900000);
+
+          // Get pricing
+          const selectedOption = destinationSelect.options[destinationSelect.selectedIndex];
+          const classOption = classSelect.options[classSelect.selectedIndex];
+          const basePrice = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+          const markup = parseFloat(classOption.getAttribute('data-markup')) || 0;
+          const totalPrice = (basePrice + markup) * guests;
+
+          const booking = {
+            ref,
+            name,
+            email,
+            phone,
+            passport,
+            destination,
+            destinationText,
+            date,
+            guests,
+            serviceClass,
+            specialRequests,
+            totalPrice,
+            status: 'Pending Confirmation'
+          };
+
+          // Save to localStorage
+          const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+          bookings.push(booking);
+          localStorage.setItem('bookings', JSON.stringify(bookings));
+
+          // Show Success
+          document.getElementById('refCode').textContent = ref;
+          document.getElementById('bookingCard').style.display = 'none';
+          document.getElementById('successOverlay').style.display = 'block';
+        });
+      });
+    </script>
+  </body>
+</html>

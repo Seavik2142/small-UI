@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Free Travel</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .about-container {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+      .about-hero {
+        text-align: center;
+        margin-bottom: 4rem;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 4rem 2rem;
+        border-radius: var(--radius);
+      }
+      .about-hero h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      .about-hero p {
+        max-width: 700px;
+        margin: 1rem auto 0;
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+        align-items: center;
+      }
+      .about-text h2 {
+        font-size: 2rem;
+        margin-top: 0;
+      }
+      .about-text p {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .about-image img {
+        border-radius: var(--radius);
+        box-shadow: 0 10px 30px rgba(16, 42, 67, 0.08);
+      }
+      .values-section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 3rem;
+        margin-bottom: 4rem;
+        box-shadow: 0 8px 30px rgba(16, 42, 67, 0.04);
+      }
+      .values-section h2 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 2.5rem;
+      }
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .value-card {
+        text-align: center;
+      }
+      .value-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+      .value-card h3 {
+        margin: 0 0 0.8rem;
+        font-size: 1.2rem;
+      }
+      .value-card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .join-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .join-form-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2.5rem;
+        box-shadow: 0 8px 30px rgba(16, 42, 67, 0.04);
+      }
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+        font: inherit;
+        outline: none;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(24, 103, 255, 0.15);
+      }
+      .success-toast {
+        display: none;
+        padding: 1rem;
+        background: #e7f7ed;
+        color: #176b3a;
+        border-radius: 8px;
+        margin-top: 1rem;
+        font-weight: 700;
+      }
+      @media (max-width: 800px) {
+        .about-grid,
+        .values-grid,
+        .join-section {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <span>Call us: +855-15214262</span>
+        <nav class="top-links">
+          <a href="about.html">About Us</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="nav-row">
+        <div class="brand">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%;" />
+          <div>
+            <strong>Free Travel</strong>
+            <p>Explore Free Travel, malls, and services in Phnom Penh</p>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="main.html">Home</a>
+          <div class="nav-item dropdown">
+            <a href="destinations.html">Destinations</a>
+            <div class="submenu-panel">
+              <div class="submenu-top">
+                <form class="submenu-search" action="#" method="get">
+                  <input type="text" placeholder="Search tours, food, riding..." />
+                </form>
+                <div class="submenu-links">
+                  <a href="destination/kirisurfarm.html">Kirisur Farm</a>
+                  <a href="destination/honda.html">Honda Powersports</a>
+                  <a href="destination/legendcam.html">Legend Cinema</a>
+                  <a href="destination/chipmong.html">Free Travel</a>
+                  <a href="destination/phnompenhepr.html">Phnom Penh Experiences</a>
+                  <a href="destination/bookingcam.html">Booking Cambodia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="blog.html">Blog</a>
+          <a href="booking.html">Book a Trip</a>
+          <a href="contact.html">Contact</a>
+          <a id="authLink" href="login.html" class="auth-link-item">
+            <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span id="authText">Login / Register</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="about-container">
+      <section class="about-hero">
+        <h1>Our Story & Mission</h1>
+        <p>Providing authentic travel and lifestyle experiences across Phnom Penh and Cambodia.</p>
+      </section>
+
+      <section class="about-grid">
+        <div class="about-text">
+          <h2>Who We Are</h2>
+          <p>
+            Founded in 2024, Free Travel was born out of a desire to make trip planning transparent and accessible. We grew tired of crowded tour buses, hidden fees, and standard itineraries. We set out to build a platform that focuses on custom travel packages, curated local recommendations, and exceptional guest support.
+          </p>
+          <p>
+            Whether it's shopping at Chip Mong, riding Honda dirtbikes through Cambodia's rugged landscape, or exploring the beautiful Kirisur Farm, we organize seamless bookings and custom events tailored to your needs.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="image/Honda/9.avif" alt="Founders traveling" style="width: 100%; max-height: 400px; object-fit: cover;" />
+        </div>
+      </section>
+
+      <section class="values-section">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <span class="value-icon">🤝</span>
+            <h3>Customer First</h3>
+            <p>We work tirelessly to support you. We guarantee answer to every inquiry within 24 hours.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">🗺️</span>
+            <h3>Authentic Discovery</h3>
+            <p>We focus on local experiences, hidden paths, and support Cambodian businesses.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">💎</span>
+            <h3>Unmatched Value</h3>
+            <p>We work directly with transportation, hotels, and partners to offer you the best deals.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="join-section">
+        <div>
+          <h2>Work With Us</h2>
+          <p>
+            We are always looking for passionate tour guides, local travel writers, business partners, and ambassadors who share our vision. Let us know how you want to contribute!
+          </p>
+          <p>
+            Submit the inquiry form on the right and our HR / partnerships manager will review your submission and contact you within 3 business days.
+          </p>
+        </div>
+        
+        
+        <div class="join-form-card">
+          <h3>Inquiry Form</h3>
+          <form id="joinForm">
+            <div class="form-group">
+              <label for="joinName">Full Name *</label>
+              <input type="text" id="joinName" required />
+            </div>
+            <div class="form-group">
+              <label for="joinEmail">Email Address *</label>
+              <input type="email" id="joinEmail" required />
+            </div>
+            <div class="form-group">
+              <label for="joinRole">How would you like to work with us? *</label>
+              <select id="joinRole" required>
+                <option value="" disabled selected>Select option...</option>
+                <option value="tour-guide">Tour Guide</option>
+                <option value="content-creator">Travel Content Creator</option>
+                <option value="hotel-partner">Hotel / Business Partner</option>
+                <option value="other">Other Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="joinMessage">Message / Proposal Details *</label>
+              <textarea id="joinMessage" required placeholder="Tell us about yourself or your proposal..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+            <div class="success-toast" id="joinToast">Thank you! Your inquiry was submitted and our team will email you soon.</div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col about">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;" />
+          <p>
+            We're travel enthusiasts who got tired of tourist traps and bad
+            deals. Started this to help people actually enjoy their trips
+            without the headache.
+          </p>
+        </div>
+
+        <div class="footer-col links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="feedback.html">Leave a Review</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col contact">
+          <h4>Contact</h4>
+          <p>Phone: +855-15214262</p>
+          <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
+          <p>Address: Phnom Penh / Online</p>
+        </div>
+
+        <div class="footer-col newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get travel deals and updates delivered to your inbox.</p>
+          <form class="footer-newsletter" action="#" method="post">
+            <input type="email" placeholder="Your email" required />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Sync auth state
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        const authLink = document.getElementById("authLink");
+        const authText = document.getElementById("authText");
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          authText.textContent = user.name;
+          authLink.href = "profile.html";
+          document.getElementById('joinName').value = user.name;
+          document.getElementById('joinEmail').value = user.email;
+        }
+
+        // Form Submit
+        const joinForm = document.getElementById('joinForm');
+        joinForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const toast = document.getElementById('joinToast');
+          joinForm.reset();
+          toast.style.display = 'block';
+          setTimeout(() => {
+            toast.style.display = 'none';
+          }, 4000);
+        });
+      });
+    </script>
+  </body>
+</html>

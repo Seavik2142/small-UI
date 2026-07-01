@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services - Free Travel</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .services-container {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+      .services-hero {
+        text-align: center;
+        margin-bottom: 4rem;
+        background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+        color: white;
+        padding: 4rem 2rem;
+        border-radius: var(--radius);
+      }
+      .services-hero h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      .services-hero p {
+        max-width: 700px;
+        margin: 1rem auto 0;
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+        margin-bottom: 5rem;
+      }
+      .service-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2.5rem;
+        box-shadow: 0 8px 30px rgba(16, 42, 67, 0.04);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .service-badge {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .service-card h2 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+      }
+      .service-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+      .custom-req-section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 4rem;
+        box-shadow: 0 10px 40px rgba(16, 42, 67, 0.05);
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .form-group.full-width {
+        grid-column: span 2;
+      }
+      .form-group label {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 1rem;
+        background: #fff;
+        outline: none;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(24, 103, 255, 0.15);
+      }
+      .success-toast {
+        display: none;
+        padding: 1rem;
+        background: #e7f7ed;
+        color: #176b3a;
+        border-radius: 8px;
+        margin-top: 1rem;
+        font-weight: 700;
+      }
+      @media (max-width: 900px) {
+        .services-grid,
+        .custom-req-section {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .custom-req-section {
+          padding: 2rem;
+        }
+      }
+      @media (max-width: 600px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full-width {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <span>Call us: +855-15214262</span>
+        <nav class="top-links">
+          <a href="about.html">About Us</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="nav-row">
+        <div class="brand">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%;" />
+          <div>
+            <strong>Free Travel</strong>
+            <p>Explore Free Travel, malls, and services in Phnom Penh</p>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="main.html">Home</a>
+          <div class="nav-item dropdown">
+            <a href="destinations.html">Destinations</a>
+            <div class="submenu-panel">
+              <div class="submenu-top">
+                <form class="submenu-search" action="#" method="get">
+                  <input type="text" placeholder="Search tours, food, riding..." />
+                </form>
+                <div class="submenu-links">
+                  <a href="destination/kirisurfarm.html">Kirisur Farm</a>
+                  <a href="destination/honda.html">Honda Powersports</a>
+                  <a href="destination/legendcam.html">Legend Cinema</a>
+                  <a href="destination/chipmong.html">Free Travel</a>
+                  <a href="destination/phnompenhepr.html">Phnom Penh Experiences</a>
+                  <a href="destination/bookingcam.html">Booking Cambodia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="blog.html">Blog</a>
+          <a href="booking.html">Book a Trip</a>
+          <a href="contact.html">Contact</a>
+          <a id="authLink" href="login.html" class="auth-link-item">
+            <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span id="authText">Login / Register</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="services-container">
+      <section class="services-hero">
+        <h1>Our Premium Travel Services</h1>
+        <p>From custom weekend tours to corporate events, we handle all reservations and logistics.</p>
+      </section>
+
+      <section class="services-grid">
+        <div class="service-card">
+          <div>
+            <div class="service-badge">🧭</div>
+            <h2>Custom Guided Tours</h2>
+            <p>
+              Get a personalized itinerary with experienced local guides. Perfect for family excursions to Kirisur Farm, motorcycle tours around Cambodia, or heritage temple sightseeing in Siem Reap.
+            </p>
+          </div>
+          <a href="booking.html" class="btn btn-outline" style="text-align: center;">Book Guided Tour</a>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-badge">🏢</div>
+            <h2>Corporate Event Management</h2>
+            <p>
+              We organize team building days, corporate conferences, and private screenings. From catering at Chip Mong mall to private movie screenings at Legend Cinema.
+            </p>
+          </div>
+          <a href="#custom-request" class="btn btn-outline" style="text-align: center;">Request Corporate Event</a>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-badge">🚗</div>
+            <h2>Private Transport Rentals</h2>
+            <p>
+              Need private SUVs, vans, or dirt bikes for country travel? We coordinate high-quality rentals from Honda Powersports and reliable transport partners.
+            </p>
+          </div>
+          <a href="#custom-request" class="btn btn-outline" style="text-align: center;">Inquire Transport</a>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-badge">🏨</div>
+            <h2>Hotel & Resort Reservations</h2>
+            <p>
+              We coordinate with Booking Cambodia to find premium hotel rooms, villas, and stays at discounted rates. We handle payments and updates seamlessly.
+            </p>
+          </div>
+          <a href="booking.html" class="btn btn-outline" style="text-align: center;">Book Hotel</a>
+        </div>
+      </section>
+
+      
+      <section class="custom-req-section" id="custom-request">
+        <div>
+          <h2>Need a Custom Solution?</h2>
+          <p>
+            Tell us about your specific group travel plans, corporate logistics, or special rental needs. We will design a custom service proposal.
+          </p>
+          <p>
+            Please describe your requirements, dates, and number of participants, and our coordinator will respond with a quote.
+          </p>
+        </div>
+        <div>
+          <form id="customReqForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="reqName">Your Name *</label>
+                <input type="text" id="reqName" required />
+              </div>
+              <div class="form-group">
+                <label for="reqEmail">Email Address *</label>
+                <input type="email" id="reqEmail" required />
+              </div>
+              <div class="form-group">
+                <label for="reqType">Service Type *</label>
+                <select id="reqType" required>
+                  <option value="" disabled selected>Choose type...</option>
+                  <option value="corporate">Corporate Event</option>
+                  <option value="group-tour">Custom Group Tour</option>
+                  <option value="transport">Long-term Transport Rental</option>
+                  <option value="other">Other Service</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="reqDate">Preferred Date *</label>
+                <input type="date" id="reqDate" required />
+              </div>
+              <div class="form-group full-width">
+                <label for="reqDetails">Requirements & Details *</label>
+                <textarea id="reqDetails" required placeholder="Describe your expectations, itinerary ideas, group size..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Request Quote</button>
+            <div class="success-toast" id="reqToast">Request submitted successfully! Our service manager will contact you soon.</div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col about">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;" />
+          <p>
+            We're travel enthusiasts who got tired of tourist traps and bad
+            deals. Started this to help people actually enjoy their trips
+            without the headache.
+          </p>
+        </div>
+
+        <div class="footer-col links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="feedback.html">Leave a Review</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col contact">
+          <h4>Contact</h4>
+          <p>Phone: +855-15214262</p>
+          <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
+          <p>Address: Phnom Penh / Online</p>
+        </div>
+
+        <div class="footer-col newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get travel deals and updates delivered to your inbox.</p>
+          <form class="footer-newsletter" action="#" method="post">
+            <input type="email" placeholder="Your email" required />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Sync auth state
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        const authLink = document.getElementById("authLink");
+        const authText = document.getElementById("authText");
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          authText.textContent = user.name;
+          authLink.href = "profile.html";
+          document.getElementById('reqName').value = user.name;
+          document.getElementById('reqEmail').value = user.email;
+        }
+
+        // Form Submit
+        const customReqForm = document.getElementById('customReqForm');
+        customReqForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const toast = document.getElementById('reqToast');
+          customReqForm.reset();
+          toast.style.display = 'block';
+          setTimeout(() => {
+            toast.style.display = 'none';
+          }, 4000);
+        });
+      });
+    </script>
+  </body>
+</html>

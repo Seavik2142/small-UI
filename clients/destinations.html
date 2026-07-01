@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Destinations - Free Travel</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .dest-container {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+      .dest-hero {
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        color: white;
+        padding: 4rem 2rem;
+        border-radius: var(--radius);
+      }
+      .dest-hero h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      .dest-hero p {
+        max-width: 600px;
+        margin: 1rem auto 0;
+        font-size: 1.1rem;
+        opacity: 0.95;
+      }
+      .filter-bar {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem 2rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 30px rgba(16, 42, 67, 0.03);
+      }
+      .filter-form {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 120px;
+        gap: 1.5rem;
+        align-items: end;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .form-group label {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .form-group input,
+      .form-group select {
+        padding: 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+        font: inherit;
+        outline: none;
+      }
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(24, 103, 255, 0.15);
+      }
+      .dest-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+      .dest-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(16, 42, 67, 0.04);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .dest-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(16, 42, 67, 0.08);
+      }
+      .dest-img-container {
+        position: relative;
+      }
+      .dest-img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+      }
+      .dest-price-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--primary);
+        color: white;
+        font-weight: 700;
+        padding: 0.4rem 1rem;
+        border-radius: 99px;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 10px rgba(24, 103, 255, 0.3);
+      }
+      .dest-content {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .dest-title {
+        margin: 0 0 0.5rem;
+        font-size: 1.35rem;
+        color: var(--text);
+      }
+      .dest-cat {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--primary);
+        letter-spacing: 0.5px;
+        margin-bottom: 0.8rem;
+      }
+      .dest-desc {
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+        margin: 0 0 1.5rem;
+      }
+      .dest-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .dest-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .filter-form {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .dest-grid {
+          grid-template-columns: 1fr;
+        }
+        .filter-form {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <span>Call us: +855-15214262</span>
+        <nav class="top-links">
+          <a href="about.html">About Us</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="nav-row">
+        <div class="brand">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%;" />
+          <div>
+            <strong>Free Travel</strong>
+            <p>Explore Free Travel, malls, and services in Phnom Penh</p>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="main.html">Home</a>
+          <div class="nav-item dropdown">
+            <a href="destinations.html" class="active">Destinations</a>
+            <div class="submenu-panel">
+              <div class="submenu-top">
+                <form class="submenu-search" action="#" method="get">
+                  <input type="text" placeholder="Search tours, food, riding..." />
+                </form>
+                <div class="submenu-links">
+                  <a href="destination/kirisurfarm.html">Kirisur Farm</a>
+                  <a href="destination/honda.html">Honda Powersports</a>
+                  <a href="destination/legendcam.html">Legend Cinema</a>
+                  <a href="destination/chipmong.html">Free Travel</a>
+                  <a href="destination/phnompenhepr.html">Phnom Penh Experiences</a>
+                  <a href="destination/bookingcam.html">Booking Cambodia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="blog.html">Blog</a>
+          <a href="booking.html">Book a Trip</a>
+          <a href="contact.html">Contact</a>
+          <a id="authLink" href="login.html" class="auth-link-item">
+            <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span id="authText">Login / Register</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="dest-container">
+      <section class="dest-hero">
+        <h1>All Travel Destinations</h1>
+        <p>Explore farms, shopping malls, motor activities, cinemas, and temple tours in Cambodia.</p>
+      </section>
+
+      
+      <section class="filter-bar">
+        <form class="filter-form" id="filterForm">
+          <div class="form-group">
+            <label for="searchQuery">Search Destinations</label>
+            <input type="text" id="searchQuery" placeholder="e.g. Farm, Cinema, Mall..." />
+          </div>
+          <div class="form-group">
+            <label for="filterCategory">Category</label>
+            <select id="filterCategory">
+              <option value="all">All Categories</option>
+              <option value="Nature">Nature & Farm</option>
+              <option value="Motor">Motor Activities</option>
+              <option value="Entertainment">Entertainment & Mall</option>
+              <option value="Heritage">Heritage & Stay</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filterPrice">Max Price</label>
+            <select id="filterPrice">
+              <option value="all">Any Price</option>
+              <option value="30">Under $30</option>
+              <option value="80">Under $80</option>
+              <option value="120">Under $120</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Filter</button>
+        </form>
+      </section>
+
+      <section class="dest-grid" id="destGrid">
+        <!-- Dest 1 -->
+        <article class="dest-card" data-title="Kirisur Farm" data-cat="Nature" data-price="49">
+          <div class="dest-img-container">
+            <img src="image/Booking.com/17.png" alt="Kirisur Farm" class="dest-img" />
+            <div class="dest-price-badge">$49 / guest</div>
+          </div>
+          <div class="dest-content">
+            <div>
+              <div class="dest-cat">Nature & Farm</div>
+              <h2 class="dest-title">Kirisur Farm</h2>
+              <p class="dest-desc">Enjoy fresh milk, green hills, pastures, and agricultural tours in Kirisur Farm.</p>
+            </div>
+            <div class="dest-actions">
+              <a href="destination/kirisurfarm.html" class="link" style="color: var(--primary); font-weight: 600;">Details →</a>
+              <a href="booking.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dest 2 -->
+        <article class="dest-card" data-title="Honda Powersports" data-cat="Motor" data-price="99">
+          <div class="dest-img-container">
+            <img src="image/Honda/7.avif" alt="Honda Powersports" class="dest-img" />
+            <div class="dest-price-badge">$99 / guest</div>
+          </div>
+          <div class="dest-content">
+            <div>
+              <div class="dest-cat">Motor Activities</div>
+              <h2 class="dest-title">Honda Powersports</h2>
+              <p class="dest-desc">Ride high-powered motocross and dirt bikes across local Cambodian country roads.</p>
+            </div>
+            <div class="dest-actions">
+              <a href="destination/honda.html" class="link" style="color: var(--primary); font-weight: 600;">Details →</a>
+              <a href="booking.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dest 3 -->
+        <article class="dest-card" data-title="Legend Cinema" data-cat="Entertainment" data-price="15">
+          <div class="dest-img-container">
+            <img src="image/Legend%20cinima/HO00000126.jpg" alt="Legend Cinema" class="dest-img" />
+            <div class="dest-price-badge">$15 / guest</div>
+          </div>
+          <div class="dest-content">
+            <div>
+              <div class="dest-cat">Entertainment & Mall</div>
+              <h2 class="dest-title">Legend Cinema</h2>
+              <p class="dest-desc">Relax with luxury seating, blockbusters, and dining packages in Phnom Penh.</p>
+            </div>
+            <div class="dest-actions">
+              <a href="destination/legendcam.html" class="link" style="color: var(--primary); font-weight: 600;">Details →</a>
+              <a href="booking.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dest 4 -->
+        <article class="dest-card" data-title="Chip Mong Shopping Day" data-cat="Entertainment" data-price="29">
+          <div class="dest-img-container">
+            <img src="image/chipmorng%20mega%20mall/1.jpg" alt="Chip Mong Mall" class="dest-img" />
+            <div class="dest-price-badge">$29 / guest</div>
+          </div>
+          <div class="dest-content">
+            <div>
+              <div class="dest-cat">Entertainment & Mall</div>
+              <h2 class="dest-title">Chip Mong Shopping</h2>
+              <p class="dest-desc">Explore lifestyle malls, local boutiques, and retail supermarkets in Cambodia.</p>
+            </div>
+            <div class="dest-actions">
+              <a href="destination/chipmong.html" class="link" style="color: var(--primary); font-weight: 600;">Details →</a>
+              <a href="booking.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dest 5 -->
+        <article class="dest-card" data-title="Phnom Penh Experiences" data-cat="Nature" data-price="79">
+          <div class="dest-img-container">
+            <img src="image/Honda/11.avif" alt="Phnom Penh Experiences" class="dest-img" />
+            <div class="dest-price-badge">$79 / guest</div>
+          </div>
+          <div class="dest-content">
+            <div>
+              <div class="dest-cat">Nature & Farm</div>
+              <h2 class="dest-title">Phnom Penh Experiences</h2>
+              <p class="dest-desc">Beautiful river cruises, organic fruit farms, and relaxing countryside retreats.</p>
+            </div>
+            <div class="dest-actions">
+              <a href="destination/phnompenhepr.html" class="link" style="color: var(--primary); font-weight: 600;">Details →</a>
+              <a href="booking.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dest 6 -->
+        <article class="dest-card" data-title="Booking Cambodia" data-cat="Heritage" data-price="119">
+          <div class="dest-img-container">
+            <img src="image/Booking.com/1.jpg" alt="Booking Cambodia" class="dest-img" />
+            <div class="dest-price-badge">$119 / guest</div>
+          </div>
+          <div class="dest-content">
+            <div>
+              <div class="dest-cat">Heritage & Stay</div>
+              <h2 class="dest-title">Siem Reap Temple Tour</h2>
+              <p class="dest-desc">Explore the world-famous Angkor Wat temples and rest in luxury hotel suites.</p>
+            </div>
+            <div class="dest-actions">
+              <a href="destination/bookingcam.html" class="link" style="color: var(--primary); font-weight: 600;">Details →</a>
+              <a href="booking.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Book Now</a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col about">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;" />
+          <p>
+            We're travel enthusiasts who got tired of tourist traps and bad
+            deals. Started this to help people actually enjoy their trips
+            without the headache.
+          </p>
+        </div>
+
+        <div class="footer-col links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="feedback.html">Leave a Review</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col contact">
+          <h4>Contact</h4>
+          <p>Phone: +855-15214262</p>
+          <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
+          <p>Address: Phnom Penh / Online</p>
+        </div>
+
+        <div class="footer-col newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get travel deals and updates delivered to your inbox.</p>
+          <form class="footer-newsletter" action="#" method="post">
+            <input type="email" placeholder="Your email" required />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Sync auth state
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        const authLink = document.getElementById("authLink");
+        const authText = document.getElementById("authText");
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          authText.textContent = user.name;
+          authLink.href = "profile.html";
+        }
+
+        // Form Submit for Filtering
+        const filterForm = document.getElementById('filterForm');
+        filterForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          filterDestinations();
+        });
+
+        function filterDestinations() {
+          const query = document.getElementById('searchQuery').value.trim().toLowerCase();
+          const category = document.getElementById('filterCategory').value;
+          const maxPrice = document.getElementById('filterPrice').value;
+
+          const cards = document.querySelectorAll('.dest-card');
+          cards.forEach(card => {
+            const title = card.getAttribute('data-title').toLowerCase();
+            const cat = card.getAttribute('data-cat');
+            const price = parseFloat(card.getAttribute('data-price')) || 0;
+
+            const matchesQuery = query === '' || title.includes(query);
+            const matchesCat = category === 'all' || cat === category;
+            
+            let matchesPrice = true;
+            if (maxPrice !== 'all') {
+              matchesPrice = price <= parseFloat(maxPrice);
+            }
+
+            if (matchesQuery && matchesCat && matchesPrice) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

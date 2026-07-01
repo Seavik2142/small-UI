@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave a Review - Free Travel</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .feedback-layout {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: 1.2fr 1.8fr;
+        gap: 3rem;
+      }
+      .feedback-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2.5rem;
+        box-shadow: 0 8px 30px rgba(16, 42, 67, 0.04);
+        position: sticky;
+        top: 100px;
+        align-self: start;
+      }
+      .feedback-header {
+        margin-bottom: 2rem;
+      }
+      .feedback-header h1 {
+        margin: 0;
+        font-size: 2rem;
+        color: var(--text);
+      }
+      .feedback-header p {
+        color: var(--muted);
+        margin-top: 0.5rem;
+      }
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+        font: inherit;
+        outline: none;
+      }
+      .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(24, 103, 255, 0.15);
+      }
+      .rating-stars {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #ddd;
+        margin-bottom: 1rem;
+      }
+      .rating-stars span.active {
+        color: #f1c40f;
+      }
+      .reviews-section h2 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+      }
+      .reviews-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .review-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: 0 8px 30px rgba(16, 42, 67, 0.04);
+      }
+      .review-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+      }
+      .reviewer-name {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+      .review-stars {
+        color: #f1c40f;
+        font-size: 1.1rem;
+      }
+      .review-dest {
+        font-size: 0.85rem;
+        color: var(--muted);
+        background: var(--bg);
+        padding: 0.1rem 0.6rem;
+        border-radius: 99px;
+      }
+      .review-text {
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0;
+      }
+      .success-toast {
+        display: none;
+        padding: 1rem;
+        background: #e7f7ed;
+        color: #176b3a;
+        border-radius: 8px;
+        margin-top: 1rem;
+        font-weight: 700;
+      }
+      @media (max-width: 900px) {
+        .feedback-layout {
+          grid-template-columns: 1fr;
+        }
+        .feedback-card {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <span>Call us: +855-15214262</span>
+        <nav class="top-links">
+          <a href="about.html">About Us</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="nav-row">
+        <div class="brand">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%;" />
+          <div>
+            <strong>Free Travel</strong>
+            <p>Explore Free Travel, malls, and services in Phnom Penh</p>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="main.html">Home</a>
+          <div class="nav-item dropdown">
+            <a href="destinations.html">Destinations</a>
+            <div class="submenu-panel">
+              <div class="submenu-top">
+                <form class="submenu-search" action="#" method="get">
+                  <input type="text" placeholder="Search tours, food, riding..." />
+                </form>
+                <div class="submenu-links">
+                  <a href="destination/kirisurfarm.html">Kirisur Farm</a>
+                  <a href="destination/honda.html">Honda Powersports</a>
+                  <a href="destination/legendcam.html">Legend Cinema</a>
+                  <a href="destination/chipmong.html">Free Travel</a>
+                  <a href="destination/phnompenhepr.html">Phnom Penh Experiences</a>
+                  <a href="destination/bookingcam.html">Booking Cambodia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="blog.html">Blog</a>
+          <a href="booking.html">Book a Trip</a>
+          <a href="contact.html">Contact</a>
+          <a id="authLink" href="login.html" class="auth-link-item">
+            <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span id="authText">Login / Register</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="feedback-layout">
+      
+      <div class="feedback-card">
+        <div class="feedback-header">
+          <h1>Leave a Review</h1>
+          <p>Tell us about your trip to help other travelers and improve our tours.</p>
+        </div>
+
+        <form id="feedbackForm">
+          <div class="form-group">
+            <label for="reviewerName">Your Name *</label>
+            <input type="text" id="reviewerName" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="reviewerEmail">Your Email *</label>
+            <input type="email" id="reviewerEmail" required />
+          </div>
+
+          <div class="form-group">
+            <label for="destinationVisited">Destination Visited *</label>
+            <select id="destinationVisited" required>
+              <option value="" disabled selected>Select destination...</option>
+              <option value="Kirisur Farm">Kirisur Farm</option>
+              <option value="Honda Powersports">Honda Powersports</option>
+              <option value="Legend Cinema">Legend Cinema</option>
+              <option value="Chip Mong Mall">Chip Mong Mall</option>
+              <option value="Phnom Penh Experiences">Phnom Penh Experiences</option>
+              <option value="Siem Reap / Booking.com">Siem Reap / Booking.com</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Rating *</label>
+            <div class="rating-stars" id="ratingStars">
+              <span data-value="1">★</span>
+              <span data-value="2">★</span>
+              <span data-value="3">★</span>
+              <span data-value="4">★</span>
+              <span data-value="5">★</span>
+            </div>
+            <input type="hidden" id="ratingValue" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reviewText">Review Comments *</label>
+            <textarea id="reviewText" required placeholder="Describe your experience, staff service, hotel quality..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Review</button>
+          <div class="success-toast" id="feedbackToast">Thank you! Your review has been posted successfully below.</div>
+        </form>
+      </div>
+
+      <!-- Right side: Reviews Feed -->
+      <div class="reviews-section">
+        <h2>What Other Travelers Say</h2>
+        <div class="reviews-list" id="reviewsList">
+          <!-- Static review 1 -->
+          <div class="review-item">
+            <div class="review-meta">
+              <div>
+                <span class="reviewer-name">Vanna Lim</span>
+                <span class="review-dest">Kirisur Farm</span>
+              </div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <p class="review-text">
+              Kirisur Farm was an incredible escape! The cows, fresh milk, and green meadows made us feel like we were in Europe. The guide from Free Travel was friendly and handled all coordination perfectly.
+            </p>
+          </div>
+
+          <!-- Static review 2 -->
+          <div class="review-item">
+            <div class="review-meta">
+              <div>
+                <span class="reviewer-name">Chantha Sok</span>
+                <span class="review-dest">Honda Powersports</span>
+              </div>
+              <div class="review-stars">★★★★☆</div>
+            </div>
+            <p class="review-text">
+              Biking around the countryside was an absolute blast. Honda Powersports provided top-notch bikes. The booking process was simple and fast. Highly recommended.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col about">
+          <img src="image/logo.jpg" alt="Free Travel Logo" style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 1rem;" />
+          <p>
+            We're travel enthusiasts who got tired of tourist traps and bad
+            deals. Started this to help people actually enjoy their trips
+            without the headache.
+          </p>
+        </div>
+
+        <div class="footer-col links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="feedback.html">Leave a Review</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col contact">
+          <h4>Contact</h4>
+          <p>Phone: +855-15214262</p>
+          <p>Email: <a href="mailto:Freepromote@gmail.com">Freepromote@gmail.com</a></p>
+          <p>Address: Phnom Penh / Online</p>
+        </div>
+
+        <div class="footer-col newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get travel deals and updates delivered to your inbox.</p>
+          <form class="footer-newsletter" action="#" method="post">
+            <input type="email" placeholder="Your email" required />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Free Promote Travel. Made by travelers, for travelers.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Sync auth state
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentUser");
+        const authLink = document.getElementById("authLink");
+        const authText = document.getElementById("authText");
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          authText.textContent = user.name;
+          authLink.href = "profile.html";
+          document.getElementById('reviewerName').value = user.name;
+          document.getElementById('reviewerEmail').value = user.email;
+        }
+
+        // Rating Stars interaction
+        const stars = document.querySelectorAll('#ratingStars span');
+        const ratingVal = document.getElementById('ratingValue');
+        
+        stars.forEach(star => {
+          star.addEventListener('click', function() {
+            const val = parseInt(this.getAttribute('data-value'));
+            ratingVal.value = val;
+            
+            stars.forEach((s, idx) => {
+              if (idx < val) {
+                s.classList.add('active');
+              } else {
+                s.classList.remove('active');
+              }
+            });
+          });
+        });
+
+        // Form Submit
+        const feedbackForm = document.getElementById('feedbackForm');
+        feedbackForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const name = document.getElementById('reviewerName').value.trim();
+          const dest = document.getElementById('destinationVisited').value;
+          const starsCount = parseInt(ratingVal.value) || 5;
+          const text = document.getElementById('reviewText').value.trim();
+          const toast = document.getElementById('feedbackToast');
+
+          if (!ratingVal.value) {
+            alert('Please select a rating star.');
+            return;
+          }
+
+          // Create review element
+          const list = document.getElementById('reviewsList');
+          const item = document.createElement('div');
+          item.className = 'review-item';
+          
+          let starsStr = '';
+          for (let i = 0; i < 5; i++) {
+            starsStr += i < starsCount ? '★' : '☆';
+          }
+
+          item.innerHTML = `
+            <div class="review-meta">
+              <div>
+                <span class="reviewer-name">${escapeHTML(name)}</span>
+                <span class="review-dest">${escapeHTML(dest)}</span>
+              </div>
+              <div class="review-stars">${starsStr}</div>
+            </div>
+            <p class="review-text">${escapeHTML(text)}</p>
+          `;
+
+          // Insert at top of list
+          list.insertBefore(item, list.firstChild);
+
+          // Reset Form
+          feedbackForm.reset();
+          stars.forEach(s => s.classList.remove('active'));
+          ratingVal.value = '';
+
+          // Toast Message
+          toast.style.display = 'block';
+          setTimeout(() => {
+            toast.style.display = 'none';
+          }, 4000);
+        });
+      });
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"]/g, 
+          tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+          }[tag] || tag)
+        );
+      }
+    </script>
+  </body>
+</html>
