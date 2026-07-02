@@ -295,8 +295,27 @@
 
                     document.getElementById('successMessage').classList.add('show');
                     setTimeout(() => {
-                        window.location.href = 'login.html';
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirect = urlParams.get('redirect');
+                        const redirectSuffix = redirect ? `?redirect=${encodeURIComponent(redirect)}` : '';
+                        window.location.href = 'login.html' + redirectSuffix;
                     }, 1500);
+                }
+            }
+        });
+
+        // Propagate redirect parameter to login link
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirect = urlParams.get('redirect');
+            if (redirect) {
+                const loginLink = document.querySelector('.auth-link a');
+                if (loginLink) {
+                    loginLink.href = `login.html?redirect=${encodeURIComponent(redirect)}`;
+                }
+                const backLink = document.querySelector('.back-link');
+                if (backLink) {
+                    backLink.href = redirect;
                 }
             }
         });

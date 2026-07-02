@@ -244,7 +244,9 @@
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     document.getElementById('successMessage').classList.add('show');
                     setTimeout(() => {
-                        window.location.href = 'main.html';
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirectUrl = urlParams.get('redirect') || 'main.html';
+                        window.location.href = redirectUrl;
                     }, 1500);
                 } else {
                     showError('emailError', 'Invalid email or password');
@@ -280,6 +282,22 @@
             if (passwordInput.classList.contains('error')) {
                 clearError('passwordError');
                 passwordInput.classList.remove('error');
+            }
+        });
+
+        // Propagate redirect parameter to register link
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirect = urlParams.get('redirect');
+            if (redirect) {
+                const registerLink = document.querySelector('.auth-link a');
+                if (registerLink) {
+                    registerLink.href = `register.html?redirect=${encodeURIComponent(redirect)}`;
+                }
+                const backLink = document.querySelector('.back-link');
+                if (backLink) {
+                    backLink.href = redirect;
+                }
             }
         });
     </script>

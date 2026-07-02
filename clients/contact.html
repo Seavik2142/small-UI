@@ -58,7 +58,35 @@
     </div>
   </main>
   <script>
-    document.querySelectorAll('.card').forEach(function(form){form.addEventListener('submit',function(event){event.preventDefault();if(!form.checkValidity()){form.reportValidity();return}var button=form.querySelector('button');var status=form.querySelector('.status');var label=button.textContent;button.disabled=true;button.textContent='Submitting...';setTimeout(function(){form.reset();button.disabled=false;button.textContent=label;status.textContent='Submitted successfully. Reference: FT-'+Date.now().toString().slice(-6);status.classList.add('show');status.focus()},400)})});
+    document.querySelectorAll('.card').forEach(function(form){
+      form.addEventListener('submit',function(event){
+        event.preventDefault();
+        
+        if (form.getAttribute('data-name') === 'Booking Request' && !localStorage.getItem('currentUser')) {
+          alert("You must login first to request a booking.");
+          window.location.href = "login.html?redirect=contact.html%23travel";
+          return;
+        }
+        
+        if(!form.checkValidity()){
+          form.reportValidity();
+          return;
+        }
+        var button=form.querySelector('button');
+        var status=form.querySelector('.status');
+        var label=button.textContent;
+        button.disabled=true;
+        button.textContent='Submitting...';
+        setTimeout(function(){
+          form.reset();
+          button.disabled=false;
+          button.textContent=label;
+          status.textContent='Submitted successfully. Reference: FT-'+Date.now().toString().slice(-6);
+          status.classList.add('show');
+          status.focus();
+        },400);
+      });
+    });
   </script>
 </body>
 </html>

@@ -164,14 +164,19 @@
             <a href="destinations.html">Destinations</a>
             <div class="submenu-panel">
               <div class="submenu-top">
-                <form class="submenu-search" action="#" method="get">
-                  <input type="text" placeholder="Search tours, food, riding..." />
+                <form class="submenu-search" action="#" method="get" onsubmit="return false;">
+                  <input
+                    type="text"
+                    id="navSearchInput"
+                    placeholder="Search destinations..."
+                    onkeyup="filterDestinations(this.value, '')"
+                  />
                 </form>
-                <div class="submenu-links">
+                <div class="submenu-links" id="navDestinationsList">
                   <a href="destination/kirisurfarm.html">Kirisur Farm</a>
                   <a href="destination/honda.html">Honda Powersports</a>
                   <a href="destination/legendcam.html">Legend Cinema</a>
-                  <a href="destination/chipmong.html">Free Travel</a>
+                  <a href="destination/chipmong.html">Chip Mong Experience</a>
                   <a href="destination/phnompenhepr.html">Phnom Penh Experiences</a>
                   <a href="destination/bookingcam.html">Booking Cambodia</a>
                 </div>
@@ -392,6 +397,13 @@
         const bookingForm = document.getElementById('bookingForm');
         bookingForm.addEventListener('submit', function(e) {
           e.preventDefault();
+
+          const currentUser = localStorage.getItem("currentUser");
+          if (!currentUser) {
+            alert("You must login first to request a booking.");
+            window.location.href = "login.html?redirect=booking.html";
+            return;
+          }
 
           const name = document.getElementById('fullName').value.trim();
           const email = document.getElementById('email').value.trim();
